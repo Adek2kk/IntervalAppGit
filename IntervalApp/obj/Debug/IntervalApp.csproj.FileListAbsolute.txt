@@ -16,3 +16,25 @@ c:\users\adamc\documents\visual studio 2013\Projects\IntervalApp\IntervalApp\obj
 c:\users\adamc\documents\visual studio 2013\Projects\IntervalApp\IntervalApp\obj\Debug\IntervalApp.exe
 c:\users\adamc\documents\visual studio 2013\Projects\IntervalApp\IntervalApp\obj\Debug\IntervalApp.pdb
 c:\users\adamc\documents\visual studio 2013\Projects\IntervalApp\IntervalApp\obj\Debug\App.baml
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\bin\Debug\IntervalApp.exe.config
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\IntervalApp.exe
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\IntervalApp.pdb
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\bin\Debug\IntervalApp.exe
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\bin\Debug\IntervalApp.pdb
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\bin\Debug\MahApps.Metro.dll
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\bin\Debug\System.Windows.Interactivity.dll
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\bin\Debug\MahApps.Metro.pdb
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\bin\Debug\MahApps.Metro.xml
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\IntervalApp.csprojResolveAssemblyReference.cache
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\PageSwitcher.baml
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\App.baml
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\PageSwitcher.g.cs
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\App.g.cs
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\IntervalApp_MarkupCompile.cache
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\IntervalApp.g.resources
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\IntervalApp.Properties.Resources.resources
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\IntervalApp.csproj.GenerateResource.Cache
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\MainUserControls\MainMenu.baml
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\MainUserControls\MainMenu.g.cs
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\MainUserControls\ProjectPage.baml
+D:\Studia\Semestr VIII\HDiPA\Laboratorium\HurtownieGit\IntervalAppGit\IntervalApp\obj\Debug\MainUserControls\ProjectPage.g.cs

@@ -14,15 +14,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using MahApps.Metro.Controls;
+using IntervalApp.Switchable;
 
-namespace IntervalApp
+namespace IntervalApp.MainUserControls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ProjectPage.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class ProjectPage : UserControl
     {
-        public MainWindow()
+        public ProjectPage()
         {
             InitializeComponent();
         }
