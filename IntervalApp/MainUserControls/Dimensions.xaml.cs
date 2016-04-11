@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IntervalApp.DatabaseConn;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace IntervalApp.MainUserControls
         public Dimensions()
         {
             InitializeComponent();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Connection conn = new Connection();
+            conn.Open();
+            string sql = "Create table " + tableName.Text + "(testowoid int)";
+            Console.WriteLine(sql);
+            conn.ExecuteNonQuery(sql);
+            conn.Close();
         }
     }
 }

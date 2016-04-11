@@ -54,5 +54,40 @@ namespace IntervalApp.DatabaseConn
             }
             return null;
         }
+        public OracleDataReader ExecuteReader(string sql)
+        {
+            try
+            {
+                OracleDataReader reader;
+                OracleCommand cmd = new OracleCommand(sql, conn);
+                reader = cmd.ExecuteReader();
+                return reader;
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+        public int ExecuteNonQuery(string sql)
+        {
+            try
+            {
+                int affected;
+                OracleTransaction mytransaction = conn.BeginTransaction();
+                OracleCommand cmd = conn.CreateCommand();
+                cmd.CommandText = sql;
+                cmd.Connection = conn;
+                affected = cmd.ExecuteNonQuery();
+                mytransaction.Commit();
+                return affected;
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+            return -1;
+        }
     }
 }
+
