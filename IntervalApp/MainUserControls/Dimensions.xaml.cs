@@ -15,6 +15,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+using MahApps.Metro.Controls;
+using IntervalApp.Switchable;
+
 namespace IntervalApp.MainUserControls
 {   
 
@@ -44,6 +48,11 @@ namespace IntervalApp.MainUserControls
             Console.WriteLine(testowy.Tables["result"].ToString());
             dimensionDataGrid.ItemsSource=testowy.Tables["result"].DefaultView;
             conn.Close();
+        }
+
+        private void BtnAddDim_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new CreateDimensions());
         }
     }
 }

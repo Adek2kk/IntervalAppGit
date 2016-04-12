@@ -7,20 +7,23 @@
              xmlns:local="clr-namespace:IntervalApp.MainUserControls"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
-    <Grid>
-        <Button x:Name="add_table" Content="Add table" HorizontalAlignment="Left" Margin="10,228,0,0" VerticalAlignment="Top" Width="120" Click="button_Click"/>
-        <TextBox x:Name="tableName" HorizontalAlignment="Left" Height="22" Margin="10,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="3" Margin="168,41,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="14"/>
-        <Label x:Name="label" Content="Table name" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.553,-0.712"/>
-        <RichTextBox x:Name="tableAttributes" HorizontalAlignment="Left" Height="100" Margin="10,110,0,0" VerticalAlignment="Top" Width="120">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text=""/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <Label x:Name="label1" Content="Attributes" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="dimensionDataGrid" HorizontalAlignment="Left" Margin="197,55,0,0" VerticalAlignment="Top" Height="221" Width="330"/>
-
-    </Grid>
+    <StackPanel>
+        <Grid>
+            <Button x:Name="add_table" Content="Add table" HorizontalAlignment="Left" Margin="10,228,0,0" VerticalAlignment="Top" Width="120" Click="button_Click"/>
+            <TextBox x:Name="tableName" HorizontalAlignment="Left" Height="22" Margin="10,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="3" Margin="168,41,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="14"/>
+            <Label x:Name="label" Content="Table name" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.553,-0.712"/>
+            <RichTextBox x:Name="tableAttributes" HorizontalAlignment="Left" Height="100" Margin="10,110,0,0" VerticalAlignment="Top" Width="120">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text=""/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="label1" Content="Attributes" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"/>
+            <DataGrid x:Name="dimensionDataGrid" HorizontalAlignment="Left" Margin="197,55,0,0" VerticalAlignment="Top" Height="221" Width="330"/>
+        
+        </Grid>
+        <Button Name="BtnAddDim" Content="Add" Click="BtnAddDim_Click"/>
+    </StackPanel>
 </UserControl>

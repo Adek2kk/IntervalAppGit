@@ -60,7 +60,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccessoryUserControls\ColumnBar.xaml.cs">
+      <DependentUpon>ColumnBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseConn\Connection.cs" />
+    <Compile Include="MainUserControls\CreateDimensions.xaml.cs">
+      <DependentUpon>CreateDimensions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainUserControls\Dimensions.xaml.cs">
       <DependentUpon>Dimensions.xaml</DependentUpon>
     </Compile>
@@ -71,6 +77,14 @@
       <DependentUpon>ProjectPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Switchable\Switcher.cs" />
+    <Page Include="AccessoryUserControls\ColumnBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\CreateDimensions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainUserControls\Dimensions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

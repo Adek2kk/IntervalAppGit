@@ -15,10 +15,10 @@
             </TabItem>
             <TabItem Header="Facts"/>
             <TabItem Header="Functions"/>
+            <TabItem Header="Hierarchiess"/>
             <TabItem Header="Queries"/>
             <TabItem Header="Import"/>
-            <TabItem Header="Form"/>
-            <TabItem Header="Help"/>
+            <TabItem Header="Stats"/>
         </TabControl>
     </StackPanel>
 </UserControl>
