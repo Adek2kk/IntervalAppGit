@@ -67,8 +67,14 @@
     <Compile Include="MainUserControls\CreateDimensions.xaml.cs">
       <DependentUpon>CreateDimensions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainUserControls\CreateFacts.xaml.cs">
+      <DependentUpon>CreateFacts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainUserControls\Dimensions.xaml.cs">
       <DependentUpon>Dimensions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainUserControls\Facts.xaml.cs">
+      <DependentUpon>Facts.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainUserControls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -85,7 +91,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MainUserControls\CreateFacts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainUserControls\Dimensions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\Facts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

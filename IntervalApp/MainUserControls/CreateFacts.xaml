@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="IntervalApp.MainUserControls.CreateDimensions"
+﻿<UserControl x:Class="IntervalApp.MainUserControls.CreateFacts"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,13 +7,15 @@
              xmlns:local2="clr-namespace:IntervalApp.AccessoryUserControls"
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="1000">
+             d:DesignHeight="750" d:DesignWidth="1000">
     <StackPanel>
-        <Label>New dimension</Label>
+        <Label>New fact</Label>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Label>Name</Label>
             <TextBox Name="TxtTableName" Width="464"/>
         </StackPanel>
+        <Label>Tables</Label>
+        
         <Label>Columns</Label>
         <StackPanel Name="ColumnsContainer"/>
         <Button x:Name="BtnAddColumn" Margin="0,0,949,0" Content="Add" Click="BtnAddColumn_Click"/>

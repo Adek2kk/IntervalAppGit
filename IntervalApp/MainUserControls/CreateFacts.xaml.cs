@@ -22,14 +22,13 @@ using System.Data;
 namespace IntervalApp.MainUserControls
 {
     /// <summary>
-    /// Interaction logic for CreateDimensions.xaml
+    /// Interaction logic for CreateFacts.xaml
     /// </summary>
-    public partial class CreateDimensions : UserControl
+    public partial class CreateFacts : UserControl
     {
-        
         private List<ColumnBar> ColumnList;
 
-        public CreateDimensions()
+        public CreateFacts()
         {
             InitializeComponent();
             ColumnList = new List<ColumnBar>();
@@ -44,7 +43,7 @@ namespace IntervalApp.MainUserControls
         private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
             bool result;
-            result = CreateNewDimension();
+            result = CreateNewFact();
             if (result)
                 Switcher.Switch(new ProjectPage());
         }
@@ -98,7 +97,7 @@ namespace IntervalApp.MainUserControls
             }
         }
 
-        private bool CreateNewDimension()
+        private bool CreateNewFact()
         {
             string tmpStr = "";
             bool allFill = true;
@@ -115,8 +114,8 @@ namespace IntervalApp.MainUserControls
             {
                 Connection conn = new Connection();
                 conn.Open();
-                conn.add_table(TxtTableName.Text, tmpStr, "dimension");
-                string test = "select table_name as dimensions from dba_tables where table_name like 'DIMENSION_%' and owner='HURTOWNIE'";
+                conn.add_table(TxtTableName.Text, tmpStr, "fact");
+                string test = "select table_name as facts from dba_tables where table_name like 'FACT_%' and owner='HURTOWNIE'";
                 DataSet testowy = conn.ExecuteDataSet(test);
                 Console.WriteLine(testowy.Tables["result"].ToString());
                 conn.Close();

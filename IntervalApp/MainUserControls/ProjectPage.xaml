@@ -13,7 +13,9 @@
             <TabItem Header="Dimensions">
                 <local:Dimensions/>
             </TabItem>
-            <TabItem Header="Facts"/>
+            <TabItem Header="Facts">
+                <local:Facts/>
+            </TabItem>
             <TabItem Header="Functions"/>
             <TabItem Header="Hierarchiess"/>
             <TabItem Header="Queries"/>

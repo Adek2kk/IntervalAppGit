@@ -30,14 +30,10 @@ namespace IntervalApp.MainUserControls
         public Dimensions()
         {
             InitializeComponent();
-            Connection conn = new Connection();
-            conn.Open();
-            string test = "select table_name as dimensions from dba_tables where table_name like 'DIMENSION_%' and owner='HURTOWNIE'";
-            DataSet testowy = conn.ExecuteDataSet(test);
-            dimensionDataGrid.ItemsSource = testowy.Tables["result"].DefaultView;
-            conn.Close();
+            SetButtonDimensions();
         }
 
+        /*
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Connection conn = new Connection();
@@ -49,10 +45,39 @@ namespace IntervalApp.MainUserControls
             dimensionDataGrid.ItemsSource=testowy.Tables["result"].DefaultView;
             conn.Close();
         }
+        */
+
+        private void SetButtonDimensions()
+        {
+
+            Connection conn = new Connection();
+            conn.Open();
+            string test = "select table_name as dimensions from dba_tables where table_name like 'DIMENSION_%' and owner='HURTOWNIE'";
+            DataSet testowy = conn.ExecuteDataSet(test);
+            
+
+            foreach(DataRow row in testowy.Tables["result"].Rows)
+            {
+                Button c = new Button();
+                c.Content = row[0].ToString();
+                c.Click += EditDimension_Click;
+                this.DimensionsContainer.Children.Add(c);
+            }
+
+            conn.Close();
+
+        }
 
         private void BtnAddDim_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new CreateDimensions());
+        }
+
+        private void EditDimension_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO
+
+            int i;
         }
     }
 }
