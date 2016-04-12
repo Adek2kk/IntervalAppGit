@@ -1,6 +1,7 @@
 ﻿using IntervalApp.DatabaseConn;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace IntervalApp.MainUserControls
-{
+{   
+
     /// <summary>
     /// Interaction logic for Dimensions.xaml
     /// </summary>
@@ -24,15 +26,23 @@ namespace IntervalApp.MainUserControls
         public Dimensions()
         {
             InitializeComponent();
+            Connection conn = new Connection();
+            conn.Open();
+            string test = "select table_name as dimensions from dba_tables where table_name like 'DIMENSION_%' and owner='HURTOWNIE'";
+            DataSet testowy = conn.ExecuteDataSet(test);
+            dimensionDataGrid.ItemsSource = testowy.Tables["result"].DefaultView;
+            conn.Close();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Connection conn = new Connection();
             conn.Open();
-            string sql = "Create table " + tableName.Text + "(testowoid int)";
-            Console.WriteLine(sql);
-            conn.ExecuteNonQuery(sql);
+            conn.add_table(tableName.Text, conn.GetString(tableAttributes),"dimension");
+            string test = "select table_name as dimensions from dba_tables where table_name like 'DIMENSION_%' and owner='HURTOWNIE'";
+            DataSet testowy = conn.ExecuteDataSet(test);
+            Console.WriteLine(testowy.Tables["result"].ToString());
+            dimensionDataGrid.ItemsSource=testowy.Tables["result"].DefaultView;
             conn.Close();
         }
     }

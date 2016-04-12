@@ -5,17 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Oracle.DataAccess.Client;
 using System.Data;
+using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace IntervalApp.DatabaseConn
 {
     public class Connection
     {
+        public string GetString(RichTextBox rtb)
+        {
+            var textRange = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd);
+            return textRange.Text;
+        }
+
         private OracleConnection conn;
 
         private string OracleServer = "Data Source=(DESCRIPTION="
                                      + "(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))"
                                      + "(CONNECT_DATA=(SERVICE_NAME=XE)));"
-                                     + "User Id=SYSTEM;Password=password;";
+                                     + "User Id=hurtownie;Password=haslo;";
 
         public bool Open()
         {
@@ -87,6 +95,12 @@ namespace IntervalApp.DatabaseConn
                 System.Console.WriteLine(ex.Message);
             }
             return -1;
+        }
+
+        public void add_table(string tablename,string attributes,string type)
+        {
+            string sql = "Create table "+ type+"_"+ tablename +"(" + attributes +  ")";
+            ExecuteNonQuery(sql);
         }
     }
 }
