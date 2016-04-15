@@ -27,5 +27,10 @@ namespace IntervalApp.MainUserControls
         {
             InitializeComponent();
         }
+        public ProjectPage(int x)
+        {
+            InitializeComponent();
+            mainTabs.SelectedIndex = x;
+        }
     }
 }

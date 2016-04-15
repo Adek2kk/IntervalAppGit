@@ -49,7 +49,7 @@ namespace IntervalApp.MainUserControls
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new ProjectPage());
+            Switcher.Switch(new ProjectPage(0));
         }
 
         private void BtnCreate_Click(object sender, RoutedEventArgs e)
@@ -57,7 +57,7 @@ namespace IntervalApp.MainUserControls
             bool result;
             result = CreateNewDimension();
             if (result)
-                Switcher.Switch(new ProjectPage());
+                Switcher.Switch(new ProjectPage(0));
         }
 
         private void BtnAddColumn_Click(object sender, RoutedEventArgs e)

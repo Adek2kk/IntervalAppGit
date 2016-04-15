@@ -9,7 +9,7 @@
              d:DesignHeight="750" d:DesignWidth="1000">
     <StackPanel>
         <Label Name="LblCurPro">Current Project</Label>
-        <TabControl>
+        <TabControl Name="mainTabs">
             <TabItem Header="Dimensions">
                 <local:Dimensions/>
             </TabItem>
