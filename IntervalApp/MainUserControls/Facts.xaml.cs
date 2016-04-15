@@ -61,9 +61,8 @@ namespace IntervalApp.MainUserControls
 
         private void EditFact_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
-
-            int i;
+            Button tmp = (Button)sender;
+            Switcher.Switch(new CreateFacts(tmp.Content.ToString()));
         }
     }
 }

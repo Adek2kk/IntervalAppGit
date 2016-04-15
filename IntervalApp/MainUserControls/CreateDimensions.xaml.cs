@@ -162,10 +162,6 @@ namespace IntervalApp.MainUserControls
                 ColumnList[i].TxtColumnName.Text = row[0].ToString();
                 ColumnList[i].TxtColumnType.Text = row[1].ToString() + "(" + row[2].ToString() + ")";
                 i++;
-                /*Button c = new Button();
-                c.Content = row[0].ToString();
-                c.Click += EditDimension_Click;
-                this.DimensionsContainer.Children.Add(c);*/
             }
 
             conn.Close();
