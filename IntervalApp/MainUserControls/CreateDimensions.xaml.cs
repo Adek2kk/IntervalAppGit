@@ -106,9 +106,9 @@ namespace IntervalApp.MainUserControls
             {
                 if (tmp.TxtColumnName.Text.ToString() == "" || tmp.TxtColumnType.Text.ToString() == "")
                     allFill = false;
-                tmpStr = tmpStr + tmp.TxtColumnName.Text.ToString() + " " + tmp.TxtColumnType.Text.ToString() + " ";
+                tmpStr = tmpStr + tmp.TxtColumnName.Text.ToString() + " " + tmp.TxtColumnType.Text.ToString() + ",";
             }
-
+            tmpStr = tmpStr.Remove(tmpStr.Length - 1);
             if (TxtTableName.Text.ToString() == "")
                 allFill = false;
             if (allFill)
@@ -116,6 +116,7 @@ namespace IntervalApp.MainUserControls
                 Connection conn = new Connection();
                 conn.Open();
                 conn.add_table(TxtTableName.Text, tmpStr, "dimension");
+                Console.WriteLine(tmpStr);
                 string test = "select table_name as dimensions from dba_tables where table_name like 'DIMENSION_%' and owner='HURTOWNIE'";
                 DataSet testowy = conn.ExecuteDataSet(test);
                 Console.WriteLine(testowy.Tables["result"].ToString());
