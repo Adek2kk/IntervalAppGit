@@ -75,9 +75,8 @@ namespace IntervalApp.MainUserControls
 
         private void EditDimension_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
-
-            int i;
+            Button tmp = (Button)sender;     
+            Switcher.Switch(new CreateDimensions(tmp.Content.ToString()));
         }
     }
 }

@@ -26,7 +26,7 @@ namespace IntervalApp.MainUserControls
     /// </summary>
     public partial class CreateDimensions : UserControl
     {
-        
+        private bool updating;
         private List<ColumnBar> ColumnList;
 
         public CreateDimensions()
@@ -34,6 +34,17 @@ namespace IntervalApp.MainUserControls
             InitializeComponent();
             ColumnList = new List<ColumnBar>();
             AddColumnBar();
+            updating = false;
+        }
+
+        public CreateDimensions(string tableName)
+        {
+            InitializeComponent();
+            this.BtnCreate.Content = "Update";
+            ColumnList = new List<ColumnBar>();
+            fillUpdateFields(tableName);
+            TxtTableName.Text = tableName.Substring(tableName.IndexOf('_') + 1);
+            updating = true;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -100,6 +111,15 @@ namespace IntervalApp.MainUserControls
 
         private bool CreateNewDimension()
         {
+            if (updating)
+            {
+                Connection conn = new Connection();
+                conn.Open();
+                string test = "DROP table DIMENSION_" + TxtTableName.Text.ToString().ToUpper()+ " CASCADE CONSTRAINTS";
+                conn.ExecuteNonQuery(test);
+                conn.Close();
+            }
+
             string tmpStr = "";
             bool allFill = true;
             foreach (ColumnBar tmp in ColumnList)
@@ -127,6 +147,28 @@ namespace IntervalApp.MainUserControls
                 MessageBox.Show("Fill all Textbox!!!");
 
             return false;
+
+        }
+        private void fillUpdateFields(string tableName)
+        {
+            Connection conn = new Connection();
+            conn.Open();
+            string test = "SELECT  column_name, data_type,data_length FROM USER_TAB_COLUMNS WHERE table_name ='" + tableName + "'";
+            DataSet testowy = conn.ExecuteDataSet(test);
+            int i = 0;
+            foreach (DataRow row in testowy.Tables["result"].Rows)
+            {
+                AddColumnBar();
+                ColumnList[i].TxtColumnName.Text = row[0].ToString();
+                ColumnList[i].TxtColumnType.Text = row[1].ToString() + "(" + row[2].ToString() + ")";
+                i++;
+                /*Button c = new Button();
+                c.Content = row[0].ToString();
+                c.Click += EditDimension_Click;
+                this.DimensionsContainer.Children.Add(c);*/
+            }
+
+            conn.Close();
         }
     }
 }
