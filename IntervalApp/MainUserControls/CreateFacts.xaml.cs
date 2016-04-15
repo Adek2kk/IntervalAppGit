@@ -105,9 +105,9 @@ namespace IntervalApp.MainUserControls
             {
                 if (tmp.TxtColumnName.Text.ToString() == "" || tmp.TxtColumnType.Text.ToString() == "")
                     allFill = false;
-                tmpStr = tmpStr + tmp.TxtColumnName.Text.ToString() + " " + tmp.TxtColumnType.Text.ToString() + " ";
+                tmpStr = tmpStr + tmp.TxtColumnName.Text.ToString() + " " + tmp.TxtColumnType.Text.ToString() + ",";
             }
-
+            tmpStr = tmpStr.Remove(tmpStr.Length - 1);
             if (TxtTableName.Text.ToString() == "")
                 allFill = false;
             if (allFill)
