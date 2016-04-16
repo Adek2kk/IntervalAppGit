@@ -9,6 +9,7 @@
     <StackPanel>
         <Button Name="BtnNew" Click="BtnNew_Click">New project</Button>
         <Button Name="BtnOpen" Click="BtnOpen_Click">Open project</Button>
+        <Button Name="BtnTest" Click="BtnTest_Click">Test project</Button>
         <Button Name="BtnExit" Click="BtnExit_Click">Exit</Button>
     </StackPanel>
 </UserControl>

@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="IntervalApp.MainUserControls.ProjectManagement.NewProjectPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IntervalApp.MainUserControls.ProjectManagement"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="1000">
+    <StackPanel>
+        <Label Content="New Project" FontSize="22" FontWeight="Bold" />
+        <StackPanel Orientation="Horizontal">
+            <Label  Content="Project name                       "/>
+            <TextBox Name="TxtName" Width="254"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label  Content="Project prefix (max. 3 char) "/>
+            <TextBox Name="TxtPrefix" Width="254"/>
+        </StackPanel>
+        <Button Name="BtnCreate" Content="Create project" Click="BtnCreate_Click"/>
+        <Button Name="BtnBack" Content="Back to menu" Click="BtnBack_Click"/>
+    </StackPanel>
+</UserControl>

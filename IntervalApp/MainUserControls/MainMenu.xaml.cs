@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using MahApps.Metro.Controls;
 using IntervalApp.Switchable;
+using IntervalApp.MainUserControls.ProjectManagement;
 
 namespace IntervalApp.MainUserControls
 {
@@ -40,9 +41,14 @@ namespace IntervalApp.MainUserControls
 
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new ProjectPage());
+            Switcher.Switch(new NewProjectPage());
         }
 
+        private void BtnTest_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Resources["ProjectPrefix"] = "tes";
+            Switcher.Switch(new ProjectPage(0));
+        }
     }
 
     
