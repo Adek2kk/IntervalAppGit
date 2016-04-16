@@ -33,6 +33,8 @@ namespace IntervalApp.MainUserControls.ProjectManagement
 
         private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
+            Connection conn = new Connection();
+            conn.insert_project("'" + TxtName.Text.ToString() + "', '" + TxtPrefix.Text.ToString() + "'");
             Application.Current.Resources["ProjectPrefix"] = TxtPrefix.Text.ToString();
             Switcher.Switch(new ProjectPage(0));
         }

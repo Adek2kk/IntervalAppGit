@@ -102,6 +102,18 @@ namespace IntervalApp.DatabaseConn
             string sql = "Create table "+ type+"_"+ tablename +"(" + attributes +  ")";
             ExecuteNonQuery(sql);
         }
+
+        public void insert_project(string attributes)
+        {
+            
+            this.Open();
+
+            string sql = "INSERT INTO MAIN_PROJECTS (NAME, PREFIX) VALUES " + " (" + attributes + ")";
+            ExecuteNonQuery(sql);
+
+            this.Close();
+        }
+
     }
 }
 

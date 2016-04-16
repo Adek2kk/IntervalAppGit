@@ -82,6 +82,9 @@
     <Compile Include="MainUserControls\ProjectManagement\NewProjectPage.xaml.cs">
       <DependentUpon>NewProjectPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainUserControls\ProjectManagement\OpenProjectPage.xaml.cs">
+      <DependentUpon>OpenProjectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainUserControls\ProjectPage.xaml.cs">
       <DependentUpon>ProjectPage.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainUserControls\ProjectManagement\NewProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\ProjectManagement\OpenProjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

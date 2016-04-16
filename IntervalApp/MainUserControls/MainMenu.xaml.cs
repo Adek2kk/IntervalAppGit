@@ -36,7 +36,7 @@ namespace IntervalApp.MainUserControls
 
         private void BtnOpen_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new ProjectPage());
+            Switcher.Switch(new OpenProjectPage());
         }
 
         private void BtnNew_Click(object sender, RoutedEventArgs e)
