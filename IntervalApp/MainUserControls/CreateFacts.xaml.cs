@@ -115,7 +115,7 @@ namespace IntervalApp.MainUserControls
             {
                 Connection conn = new Connection();
                 conn.Open();
-                string test = "DROP table FACT_" + TxtTableName.Text.ToString().ToUpper() + " CASCADE CONSTRAINTS";
+                string test = "DROP table " + Application.Current.Resources["ProjectPrefix"] + "_FACT_" + TxtTableName.Text.ToString().ToUpper() + " CASCADE CONSTRAINTS";
                 conn.ExecuteNonQuery(test);
                 conn.Close();
             }
@@ -135,8 +135,8 @@ namespace IntervalApp.MainUserControls
             {
                 Connection conn = new Connection();
                 conn.Open();
-                conn.add_table(TxtTableName.Text, tmpStr, "fact");
-                string test = "select table_name as facts from dba_tables where table_name like 'FACT_%' and owner='HURTOWNIE'";
+                conn.add_table(TxtTableName.Text, tmpStr, Application.Current.Resources["ProjectPrefix"] + "_fact");
+                string test = "select table_name as facts from dba_tables where table_name like '" + Application.Current.Resources["ProjectPrefix"] + "_FACT_%' and owner='HURTOWNIE'";
                 DataSet testowy = conn.ExecuteDataSet(test);
                 Console.WriteLine(testowy.Tables["result"].ToString());
                 conn.Close();

@@ -38,7 +38,7 @@ namespace IntervalApp.MainUserControls
 
             Connection conn = new Connection();
             conn.Open();
-            string test = "select table_name as facts from dba_tables where table_name like 'FACT_%' and owner='HURTOWNIE'";
+            string test = "select table_name as facts from dba_tables where table_name like '" + Application.Current.Resources["ProjectPrefix"] + "_FACT_%' and owner='HURTOWNIE'";
             DataSet testowy = conn.ExecuteDataSet(test);
 
 
