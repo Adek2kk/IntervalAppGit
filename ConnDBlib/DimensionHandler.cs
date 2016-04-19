@@ -12,6 +12,7 @@ namespace ConnDBlib
     {
         public static void addDimension(string tablename, string attributes, string type)
         {
+            attributes = "id int not null PRIMARY KEY, " + attributes;
             string sql = "Create table " + type + "_DIMENSION_" + tablename + "(" + attributes + ")";
             Connection.ExecuteNonQuery(sql);
         }

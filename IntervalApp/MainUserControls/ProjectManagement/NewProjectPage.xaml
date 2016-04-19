@@ -15,7 +15,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label  Content="Project prefix (max. 3 char) "/>
-            <TextBox Name="TxtPrefix" Width="254"/>
+            <TextBox Name="TxtPrefix" Width="254" MaxLength="3" />
         </StackPanel>
         <Button Name="BtnCreate" Content="Create project" Click="BtnCreate_Click"/>
         <Button Name="BtnBack" Content="Back to menu" Click="BtnBack_Click"/>
