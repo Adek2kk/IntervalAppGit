@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 using MahApps.Metro.Controls;
 using IntervalApp.Switchable;
-using IntervalApp.DatabaseConn;
+using ConnDBlib;
 using System.Data;
 
 namespace IntervalApp.MainUserControls.ProjectManagement
@@ -33,8 +33,7 @@ namespace IntervalApp.MainUserControls.ProjectManagement
 
         private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
-            Connection conn = new Connection();
-            conn.insert_project("'" + TxtName.Text.ToString() + "', '" + TxtPrefix.Text.ToString().ToUpper() + "'");
+            ProjectHandler.newProject("'" + TxtName.Text.ToString() + "', '" + TxtPrefix.Text.ToString().ToUpper() + "'");
             Application.Current.Resources["ProjectPrefix"] = TxtPrefix.Text.ToString().ToUpper();
             Switcher.Switch(new ProjectPage(0));
         }

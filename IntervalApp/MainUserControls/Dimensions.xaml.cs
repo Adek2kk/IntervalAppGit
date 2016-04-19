@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 
 using MahApps.Metro.Controls;
 using IntervalApp.Switchable;
+using ConnDBlib;
 
 namespace IntervalApp.MainUserControls
 {   
@@ -35,13 +36,8 @@ namespace IntervalApp.MainUserControls
 
         private void SetButtonDimensions()
         {
-
-            Connection conn = new Connection();
-            conn.Open();
-            string test = "select table_name as dimensions from dba_tables where table_name like '" + Application.Current.Resources["ProjectPrefix"] + "_DIMENSION_%' and owner='HURTOWNIE'";
-            DataSet testowy = conn.ExecuteDataSet(test);
+            DataSet testowy = DimensionHandler.getDimension(Application.Current.Resources["ProjectPrefix"].ToString());
             
-
             foreach(DataRow row in testowy.Tables["result"].Rows)
             {
                 Button c = new Button();
@@ -49,9 +45,6 @@ namespace IntervalApp.MainUserControls
                 c.Click += EditDimension_Click;
                 this.DimensionsContainer.Children.Add(c);
             }
-
-            conn.Close();
-
         }
 
         private void BtnAddDim_Click(object sender, RoutedEventArgs e)

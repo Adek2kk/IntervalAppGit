@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 using MahApps.Metro.Controls;
 using IntervalApp.Switchable;
-using IntervalApp.DatabaseConn;
 using IntervalApp.AccessoryUserControls;
 using System.Data;
+using ConnDBlib;
 
 namespace IntervalApp.MainUserControls
 {
@@ -43,7 +43,7 @@ namespace IntervalApp.MainUserControls
             this.BtnCreate.Content = "Update";
             ColumnList = new List<ColumnBar>();
             fillUpdateFields(tableName);
-            TxtTableName.Text = tableName.Substring(tableName.IndexOf('_') + 1);
+            TxtTableName.Text = tableName.Substring(tableName.LastIndexOf('_') + 1);
             updating = true;
         }
 
@@ -112,13 +112,8 @@ namespace IntervalApp.MainUserControls
         private bool CreateNewDimension()
         {
             if (updating)
-            {
-                Connection conn = new Connection();
-                conn.Open();
-                string test = "DROP table " + Application.Current.Resources["ProjectPrefix"] + "_DIMENSION_" + TxtTableName.Text.ToString().ToUpper()+ " CASCADE CONSTRAINTS";
-                conn.ExecuteNonQuery(test);
-                conn.Close();
-            }
+                DimensionHandler.dropDimension(Application.Current.Resources["ProjectPrefix"].ToString(), TxtTableName.Text.ToString().ToUpper());
+            
 
             string tmpStr = "";
             bool allFill = true;
@@ -129,18 +124,15 @@ namespace IntervalApp.MainUserControls
                 tmpStr = tmpStr + tmp.TxtColumnName.Text.ToString() + " " + tmp.TxtColumnType.Text.ToString() + ",";
             }
             tmpStr = tmpStr.Remove(tmpStr.Length - 1);
+
             if (TxtTableName.Text.ToString() == "")
                 allFill = false;
             if (allFill)
             {
-                Connection conn = new Connection();
-                conn.Open();
-                conn.add_table(TxtTableName.Text, tmpStr, Application.Current.Resources["ProjectPrefix"] + "_dimension");
+                DimensionHandler.addDimension(TxtTableName.Text, tmpStr, Application.Current.Resources["ProjectPrefix"].ToString());
                 Console.WriteLine(tmpStr);
-                string test = "select table_name as dimensions from dba_tables where table_name like '" + Application.Current.Resources["ProjectPrefix"] + "_DIMENSION_%' and owner='HURTOWNIE'";
-                DataSet testowy = conn.ExecuteDataSet(test);
+                DataSet testowy = DimensionHandler.getDimension(Application.Current.Resources["ProjectPrefix"].ToString());
                 Console.WriteLine(testowy.Tables["result"].ToString());
-                conn.Close();
                 return true;
             }
             else
@@ -151,10 +143,8 @@ namespace IntervalApp.MainUserControls
         }
         private void fillUpdateFields(string tableName)
         {
-            Connection conn = new Connection();
-            conn.Open();
-            string test = "SELECT  column_name, data_type,data_length FROM USER_TAB_COLUMNS WHERE table_name ='" + tableName + "'";
-            DataSet testowy = conn.ExecuteDataSet(test);
+
+            DataSet testowy = DimensionHandler.getDimensionColumns(tableName);
             int i = 0;
             foreach (DataRow row in testowy.Tables["result"].Rows)
             {
@@ -163,8 +153,6 @@ namespace IntervalApp.MainUserControls
                 ColumnList[i].TxtColumnType.Text = row[1].ToString() + "(" + row[2].ToString() + ")";
                 i++;
             }
-
-            conn.Close();
         }
     }
 }
