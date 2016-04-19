@@ -16,7 +16,7 @@ namespace ConnDBlib
             Connection.ExecuteNonQuery(sql);
         }
 
-        public static DataSet getDimension(string prefix)
+        public static DataSet getDimensions(string prefix)
         {
             string test = "select table_name as dimensions from dba_tables where table_name like '" + prefix + "_DIMENSION_%' and owner='HURTOWNIE'";
             return  Connection.ExecuteDataSet(test);

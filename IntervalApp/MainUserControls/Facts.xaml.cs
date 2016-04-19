@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 using MahApps.Metro.Controls;
 using IntervalApp.Switchable;
-using IntervalApp.DatabaseConn;
+using ConnDBlib;
 using System.Data;
 
 namespace IntervalApp.MainUserControls
@@ -36,11 +36,7 @@ namespace IntervalApp.MainUserControls
         private void SetButtonFacts()
         {
 
-            Connection conn = new Connection();
-            conn.Open();
-            string test = "select table_name as facts from dba_tables where table_name like '" + Application.Current.Resources["ProjectPrefix"] + "_FACT_%' and owner='HURTOWNIE'";
-            DataSet testowy = conn.ExecuteDataSet(test);
-
+            DataSet testowy = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
 
             foreach (DataRow row in testowy.Tables["result"].Rows)
             {
@@ -49,8 +45,6 @@ namespace IntervalApp.MainUserControls
                 c.Click += EditFact_Click;
                 this.FactsContainer.Children.Add(c);
             }
-
-            conn.Close();
 
         }
 

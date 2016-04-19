@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Connection.cs" />
     <Compile Include="DimensionHandler.cs" />
+    <Compile Include="FactHandler.cs" />
     <Compile Include="ProjectHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

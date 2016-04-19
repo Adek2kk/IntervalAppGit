@@ -36,7 +36,7 @@ namespace IntervalApp.MainUserControls
 
         private void SetButtonDimensions()
         {
-            DataSet testowy = DimensionHandler.getDimension(Application.Current.Resources["ProjectPrefix"].ToString());
+            DataSet testowy = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
             
             foreach(DataRow row in testowy.Tables["result"].Rows)
             {

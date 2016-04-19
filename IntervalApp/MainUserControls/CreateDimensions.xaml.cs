@@ -131,7 +131,7 @@ namespace IntervalApp.MainUserControls
             {
                 DimensionHandler.addDimension(TxtTableName.Text, tmpStr, Application.Current.Resources["ProjectPrefix"].ToString());
                 Console.WriteLine(tmpStr);
-                DataSet testowy = DimensionHandler.getDimension(Application.Current.Resources["ProjectPrefix"].ToString());
+                DataSet testowy = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
                 Console.WriteLine(testowy.Tables["result"].ToString());
                 return true;
             }
