@@ -17,7 +17,9 @@
                 <local:Facts/>
             </TabItem>
             <TabItem Header="Functions"/>
-            <TabItem Header="Hierarchiess"/>
+            <TabItem Header="Hierarchiess">
+                <local:Hierarchies/>
+            </TabItem>
             <TabItem Header="Queries"/>
             <TabItem Header="Import"/>
             <TabItem Header="Stats"/>
