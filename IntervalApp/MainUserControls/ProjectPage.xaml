@@ -17,11 +17,13 @@
                 <local:Facts/>
             </TabItem>
             <TabItem Header="Functions"/>
-            <TabItem Header="Hierarchiess">
+            <TabItem Header="Hierarchies">
                 <local:Hierarchies/>
             </TabItem>
+            <TabItem Header="Import">
+                <local:Import/>
+            </TabItem>
             <TabItem Header="Queries"/>
-            <TabItem Header="Import"/>
             <TabItem Header="Stats"/>
         </TabControl>
     </StackPanel>

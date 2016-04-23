@@ -1,6 +1,5 @@
 table;testimport;dimension;
-columns;id;name;test;
-columns_type;int;varchar2(50);int;
+columns;id|int;name|varchar2(50);test|int;
 data;
 1;test;1;
 2;test2;2;

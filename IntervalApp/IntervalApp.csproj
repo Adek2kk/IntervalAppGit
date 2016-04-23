@@ -82,6 +82,9 @@
     <Compile Include="MainUserControls\Hierarchies.xaml.cs">
       <DependentUpon>Hierarchies.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainUserControls\Import.xaml.cs">
+      <DependentUpon>Import.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainUserControls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainUserControls\Hierarchies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\Import.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,6 +192,10 @@
     <ProjectReference Include="..\ConnDBlib\ConnDBlib.csproj">
       <Project>{fcc24591-63e1-4b53-b084-6d4817a0fba0}</Project>
       <Name>ConnDBlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportData\ImportData.csproj">
+      <Project>{18e06ae4-e074-4f69-98cd-28943555e81c}</Project>
+      <Name>ImportData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

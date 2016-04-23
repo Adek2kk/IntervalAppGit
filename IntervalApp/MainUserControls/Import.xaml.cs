@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using ImportData;
+
 namespace IntervalApp.MainUserControls
 {
     /// <summary>
@@ -45,18 +47,12 @@ namespace IntervalApp.MainUserControls
             if (File.Exists(SourcePath))
             {
                 if (SourcePath.Substring(SourcePath.Length - 4, 4) == ".csv")
-                {
-                   
-                }
+                    ImportCSV.importTable(Application.Current.Resources["ProjectPrefix"].ToString(), SourcePath);
                 else
-                {
                     MessageBox.Show("Type of file must be a .csv!");
-                }
             }
             else
-            {
                 MessageBox.Show("File doesn't exists!");
-            }
         }
     }
 }

@@ -46,7 +46,7 @@ namespace IntervalApp.MainUserControls
 
         private void BtnTest_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Resources["ProjectPrefix"] = "tes";
+            Application.Current.Resources["ProjectPrefix"] = "TES";
             Switcher.Switch(new ProjectPage(0));
         }
     }

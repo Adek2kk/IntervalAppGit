@@ -12,7 +12,7 @@ namespace ConnDBlib
     {
         public static void addFact(string tablename, string attributes, string type)
         {
-            attributes = "id int not null PRIMARY KEY, " + attributes;
+            //attributes = "id int not null PRIMARY KEY, " + attributes;
             string sql = "Create table " + type + "_FACT_" + tablename + "(" + attributes + ")";
             Connection.ExecuteNonQuery(sql);
         }
