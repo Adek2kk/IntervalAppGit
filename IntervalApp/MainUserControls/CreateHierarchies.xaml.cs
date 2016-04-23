@@ -1,4 +1,5 @@
 ﻿using ConnDBlib;
+using IntervalApp.Switchable;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -77,6 +78,7 @@ namespace IntervalApp.MainUserControls
         private void createFK_Click(object sender, RoutedEventArgs e)
         {
             HierarchyHandler.addForeignKey(listViewTables1.SelectedItem.ToString(), listViewColumns1.SelectedItem.ToString(), listViewTables2.SelectedItem.ToString(), listViewColumns2.SelectedItem.ToString());
+            Switcher.Switch(new ProjectPage(3));
         }
     }
 }

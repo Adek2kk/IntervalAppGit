@@ -8,6 +8,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
     <Grid>
-        <Button x:Name="addHierarchy" Content="Add new" HorizontalAlignment="Left" Margin="74,77,0,0" VerticalAlignment="Top" Width="75" Click="addHierarchy_Click"/>
+        <Button x:Name="addHierarchy" Content="Add new" HorizontalAlignment="Left" Margin="465,381,0,0" VerticalAlignment="Top" Width="100" Click="addHierarchy_Click"/>
+        <ListView x:Name="listViewHierarchies" HorizontalAlignment="Left" Height="319" Margin="60,62,0,0" VerticalAlignment="Top" Width="505">
+        </ListView>
+        <Button x:Name="removeFK" Content="Remove selected" HorizontalAlignment="Left" Margin="60,381,0,0" VerticalAlignment="Top" Width="100" Click="removeFK_Click"/>
     </Grid>
 </UserControl>

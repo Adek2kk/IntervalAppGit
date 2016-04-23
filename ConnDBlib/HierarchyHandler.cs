@@ -28,13 +28,14 @@ namespace ConnDBlib
             System.Console.WriteLine(sql);
             Connection.ExecuteNonQuery(sql);
         }
-        public static void dropConstraint()
+        public static void dropConstraint(string table, string constraint)
         {
-
+            string sql = "ALTER TABLE " + table + " DROP CONSTRAINT " + constraint;
+            Connection.ExecuteNonQuery(sql);
         }
-        public static DataSet getConstraints()
+        public static DataSet getConstraints(string prefix)
         {
-            string test = "SELECT * FROM user_cons_columns where constraint_name not like 'SYS%'";
+            string test = "SELECT * FROM USER_CONSTRAINTS where constraint_name not like 'SYS%' and TABLE_NAME like '"+prefix+"%'";
             return Connection.ExecuteDataSet(test);
         }
 
