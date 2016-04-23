@@ -111,6 +111,10 @@ namespace ConnDBlib
             ExecuteNonQuery(sql);
         }
 
- 
+        public static void insert_row(string tableName, string columns, string data)
+        {
+            string sql = "INSERT INTO " +  tableName + " (" + columns + ") VALUES ("+ data + ")";
+            ExecuteNonQuery(sql);
+        }
     }
 }

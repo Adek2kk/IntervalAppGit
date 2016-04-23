@@ -12,11 +12,13 @@ namespace ImportData
 {
     public static class ImportCSV
     {
-        public static void importTable(string prefix, string filePath)
+        public static void createImportTable(string prefix, string filePath)
         {
             string tmp,tmpCol,tmpColType;
             string tableName = "", tableType = "";
             string columns = "", columnsCreate="";
+            string data = "";
+            string fullTableName = prefix + "_";
             bool startData = false;
 
             using (var parser = new TextFieldParser(File.OpenRead(filePath)))
@@ -35,13 +37,8 @@ namespace ImportData
                         {
                             tableType = fields[2].ToUpper();
                             tableName = fields[1].ToUpper();
-                            if(columnsCreate != "")
-                            {
-                                if (tableType == "DIMENSION")
-                                    DimensionHandler.addDimension(tableName, columnsCreate, prefix);
-                                else
-                                    FactHandler.addFact(tableName, columnsCreate, prefix);
-                            }
+                            fullTableName = fullTableName + tableType + "_" + tableName;
+                            tryCreateTable(prefix, tableName, tableType, columnsCreate);
                         }
                         else if (tmp == "COLUMNS")
                         {
@@ -56,22 +53,37 @@ namespace ImportData
                             columns = columns.Remove(columns.Length - 1);
                             columnsCreate = columnsCreate.Remove(columnsCreate.Length - 1);
 
-                            if (tableName != "" && tableType != "")
-                            {
-                                if (tableType == "DIMENSION")
-                                    DimensionHandler.addDimension(tableName, columnsCreate, prefix);
-                                else
-                                    FactHandler.addFact(tableName, columnsCreate, prefix);
-                            }
+                            tryCreateTable(prefix, tableName, tableType, columnsCreate);
                         }
+                        else if (tmp == "DATA")
+                            startData = true;
                     }
                     else
                     {
-                        //TODO Addding to table lines
+                        data = "";
+                        for (int i = 0; i < fields.Length - 1; i++)
+                            data = data + "'"+ fields[i] + "',";
+
+                        data = data.Remove(data.Length - 1);
+                        Console.WriteLine(data);
+                        Connection.insert_row(fullTableName, columns, data);
                     }
                     
                 }
             }
+        }
+
+        private static bool tryCreateTable(string prefix, string tableName, string tableType, string columns)
+        {
+            if (tableName != "" && tableType != "" && columns != "")
+            {
+                if (tableType == "DIMENSION")
+                    DimensionHandler.addDimension(tableName, columns, prefix);
+                else
+                    FactHandler.addFact(tableName, columns, prefix);
+                return true;
+            }
+            return false;
         }
     }
 }
