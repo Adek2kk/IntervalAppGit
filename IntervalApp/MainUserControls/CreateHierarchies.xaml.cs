@@ -21,9 +21,9 @@ namespace IntervalApp.MainUserControls
     /// <summary>
     /// Interaction logic for CreateHierarchies.xaml
     /// </summary>
-    public partial class CreateRelations : UserControl
+    public partial class CreateHierarchies : UserControl
     {
-        public CreateRelations()
+        public CreateHierarchies()
         {
             InitializeComponent();
             populateListView();
@@ -33,11 +33,11 @@ namespace IntervalApp.MainUserControls
         {
             List<string> listItems = new List<string>();
 
-            //DataSet dimensions = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
-            DataSet facts = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
+            DataSet dimensions = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
+           // DataSet facts = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
 
             
-            foreach (DataRow row in facts.Tables["result"].Rows)
+            foreach (DataRow row in dimensions.Tables["result"].Rows)
             {
                 listItems.Add(row[0].ToString());
             }
@@ -48,8 +48,8 @@ namespace IntervalApp.MainUserControls
         public List<string> columnList(string tableName)
         {
             List<string> listItems = new List<string>();
-            DataSet testowy = FactHandler.getFactColumns(tableName);
-           // DataSet testowy = DimensionHandler.getDimensionColumns(tableName);
+           // DataSet testowy = FactHandler.getFactColumns(tableName);
+            DataSet testowy = DimensionHandler.getDimensionColumns(tableName);
             foreach (DataRow row in testowy.Tables["result"].Rows)
             {
                 listItems.Add(row[0].ToString());

@@ -19,11 +19,11 @@ using System.Windows.Shapes;
 namespace IntervalApp.MainUserControls
 {
     /// <summary>
-    /// Interaction logic for CreateHierarchies.xaml
+    /// Interaction logic for CreateRelations.xaml
     /// </summary>
-    public partial class CreateHierarchies : UserControl
+    public partial class CreateRelations : UserControl
     {
-        public CreateHierarchies()
+        public CreateRelations()
         {
             InitializeComponent();
             populateListView();
@@ -31,22 +31,22 @@ namespace IntervalApp.MainUserControls
 
         public void populateListView()
         {
-            List<string> listItems = new List<string>();
-
+            List<string> listItemsFac = new List<string>();
+            List<string> listItemsDim = new List<string>();
             DataSet dimensions = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
-            //DataSet facts = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
+            DataSet facts = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
 
             foreach (DataRow row in dimensions.Tables["result"].Rows)
             {
-                listItems.Add(row[0].ToString());       
+                listItemsDim.Add(row[0].ToString());       
             }
-            /*foreach (DataRow row in facts.Tables["result"].Rows)
+            foreach (DataRow row in facts.Tables["result"].Rows)
             {
-                listItems.Add(row[0].ToString());
-            }*/
+                listItemsFac.Add(row[0].ToString());
+            }
 
-            listViewTables1.ItemsSource = listItems;
-            listViewTables2.ItemsSource = listItems;
+            listViewTables1.ItemsSource = listItemsFac;
+            listViewTables2.ItemsSource = listItemsDim;
         }
         public List<string> columnList(string tableName)
         {
@@ -78,12 +78,12 @@ namespace IntervalApp.MainUserControls
         private void createFK_Click(object sender, RoutedEventArgs e)
         {
             HierarchyHandler.addForeignKey(listViewTables1.SelectedItem.ToString(), listViewColumns1.SelectedItem.ToString(), listViewTables2.SelectedItem.ToString(), listViewColumns2.SelectedItem.ToString());
-            Switcher.Switch(new ProjectPage(3));
+            Switcher.Switch(new ProjectPage(4));
         }
 
         private void goBack_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new ProjectPage(3));
+            Switcher.Switch(new ProjectPage(4));
         }
     }
 }
