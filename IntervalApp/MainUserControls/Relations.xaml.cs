@@ -21,9 +21,9 @@ namespace IntervalApp.MainUserControls
     /// <summary>
     /// Interaction logic for Hierarchies.xaml
     /// </summary>
-    public partial class Hierarchies : UserControl
+    public partial class Relations : UserControl
     {
-        public Hierarchies()
+        public Relations()
         {
             InitializeComponent();
             populateHierarchies();
@@ -31,7 +31,7 @@ namespace IntervalApp.MainUserControls
 
         public void populateHierarchies()
         {
-            DataSet hierarchies = HierarchyHandler.getConstraints(Application.Current.Resources["ProjectPrefix"].ToString(),"DIMENSION");
+            DataSet hierarchies = HierarchyHandler.getConstraints(Application.Current.Resources["ProjectPrefix"].ToString(),"FACT");
             List<string> listItems = new List<string>();
 
             foreach (DataRow row in hierarchies.Tables["result"].Rows)
@@ -43,7 +43,7 @@ namespace IntervalApp.MainUserControls
 
         private void addHierarchy_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new CreateHierarchies());
+            Switcher.Switch(new CreateRelations());
         }
 
         private void removeFK_Click(object sender, RoutedEventArgs e)

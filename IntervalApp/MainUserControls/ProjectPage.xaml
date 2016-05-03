@@ -20,6 +20,9 @@
             <TabItem Header="Hierarchies">
                 <local:Hierarchies/>
             </TabItem>
+            <TabItem Header="Relations">
+                <local:Relations/>
+            </TabItem>
             <TabItem Header="Import">
                 <local:Import/>
             </TabItem>

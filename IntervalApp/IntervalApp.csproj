@@ -70,6 +70,9 @@
     <Compile Include="MainUserControls\CreateFacts.xaml.cs">
       <DependentUpon>CreateFacts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainUserControls\CreateRelations.xaml.cs">
+      <DependentUpon>CreateRelations.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainUserControls\CreateHierarchies.xaml.cs">
       <DependentUpon>CreateHierarchies.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,9 @@
     </Compile>
     <Compile Include="MainUserControls\Facts.xaml.cs">
       <DependentUpon>Facts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainUserControls\Relations.xaml.cs">
+      <DependentUpon>Relations.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainUserControls\Hierarchies.xaml.cs">
       <DependentUpon>Hierarchies.xaml</DependentUpon>
@@ -110,6 +116,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MainUserControls\CreateRelations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainUserControls\CreateHierarchies.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +131,10 @@
     <Page Include="MainUserControls\Facts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\Relations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainUserControls\Hierarchies.xaml">
       <SubType>Designer</SubType>

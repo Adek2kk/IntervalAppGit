@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="IntervalApp.MainUserControls.Relations"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:local="clr-namespace:IntervalApp.MainUserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid>
+        <Button x:Name="addHierarchy" Content="Add new" HorizontalAlignment="Left" Margin="465,381,0,0" VerticalAlignment="Top" Width="100" Click="addHierarchy_Click"/>
+        <ListView x:Name="listViewHierarchies" HorizontalAlignment="Left" Height="319" Margin="60,62,0,0" VerticalAlignment="Top" Width="505">
+        </ListView>
+        <Button x:Name="removeFK" Content="Remove selected" HorizontalAlignment="Left" Margin="60,381,0,0" VerticalAlignment="Top" Width="100" Click="removeFK_Click"/>
+    </Grid>
+</UserControl>

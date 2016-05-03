@@ -33,9 +33,9 @@ namespace ConnDBlib
             string sql = "ALTER TABLE " + table + " DROP CONSTRAINT " + constraint;
             Connection.ExecuteNonQuery(sql);
         }
-        public static DataSet getConstraints(string prefix)
+        public static DataSet getConstraints(string prefix,string typ)
         {
-            string test = "SELECT * FROM USER_CONSTRAINTS where constraint_name not like 'SYS%' and TABLE_NAME like '"+prefix+"%'";
+            string test = "SELECT * FROM USER_CONSTRAINTS where constraint_name not like 'SYS%' and TABLE_NAME like '"+prefix+"_"+typ+"%'";
             return Connection.ExecuteDataSet(test);
         }
 
