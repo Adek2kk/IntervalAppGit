@@ -39,8 +39,6 @@ namespace ImportData
                             tableType = fields[2].ToUpper();
                             tableName = fields[1].ToUpper();
                             fullTableName = fullTableName + tableType + "_" + tableName;
-                            if(onlyData==false) 
-                                tryCreateTable(prefix, tableName, tableType, columnsCreate,dropOld);
                         }
                         else if (tmp == "ONLYDATA")
                             onlyData = true;
@@ -58,11 +56,14 @@ namespace ImportData
 
                             columns = columns.Remove(columns.Length - 1);
                             columnsCreate = columnsCreate.Remove(columnsCreate.Length - 1);
-                            if (onlyData == false)
-                                tryCreateTable(prefix, tableName, tableType, columnsCreate,dropOld);
                         }
                         else if (tmp == "DATA")
+                        {
                             startData = true;
+                            if (onlyData == false)
+                                tryCreateTable(prefix, tableName, tableType, columnsCreate, dropOld);
+
+                        }
                     }
                     else
                     {
