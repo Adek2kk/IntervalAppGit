@@ -12,7 +12,7 @@ namespace ImportData
 {
     public static class ImportCSV
     {
-        public static void createImportTable(string prefix, string filePath)
+        public static void importTable(string prefix, string filePath)
         {
             string tmp,tmpCol,tmpColType;
             string tableName = "", tableType = "";
@@ -20,6 +20,7 @@ namespace ImportData
             string data = "";
             string fullTableName = prefix + "_";
             bool startData = false;
+            bool onlyData = false;
 
             using (var parser = new TextFieldParser(File.OpenRead(filePath)))
             {
@@ -38,8 +39,11 @@ namespace ImportData
                             tableType = fields[2].ToUpper();
                             tableName = fields[1].ToUpper();
                             fullTableName = fullTableName + tableType + "_" + tableName;
-                            tryCreateTable(prefix, tableName, tableType, columnsCreate);
+                            if(onlyData==false) 
+                                tryCreateTable(prefix, tableName, tableType, columnsCreate);
                         }
+                        else if (tmp == "ONLYDATA")
+                            onlyData = true;
                         else if (tmp == "COLUMNS")
                         {
                             for (int i = 1; i < fields.Length - 1; i++)
@@ -52,8 +56,8 @@ namespace ImportData
 
                             columns = columns.Remove(columns.Length - 1);
                             columnsCreate = columnsCreate.Remove(columnsCreate.Length - 1);
-
-                            tryCreateTable(prefix, tableName, tableType, columnsCreate);
+                            if (onlyData == false)
+                                tryCreateTable(prefix, tableName, tableType, columnsCreate);
                         }
                         else if (tmp == "DATA")
                             startData = true;

@@ -47,7 +47,7 @@ namespace IntervalApp.MainUserControls
             if (File.Exists(SourcePath))
             {
                 if (SourcePath.Substring(SourcePath.Length - 4, 4) == ".csv")
-                    ImportCSV.createImportTable(Application.Current.Resources["ProjectPrefix"].ToString(), SourcePath);
+                    ImportCSV.importTable(Application.Current.Resources["ProjectPrefix"].ToString(), SourcePath);
                 else
                     MessageBox.Show("Type of file must be a .csv!");
             }
