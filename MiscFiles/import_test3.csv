@@ -1,0 +1,6 @@
+drop
+table;testimport;dimension;
+columns;id|int;name|varchar2(50);test|int;
+data;
+8;test8;8;
+9;test9;9;

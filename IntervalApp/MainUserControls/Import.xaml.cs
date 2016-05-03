@@ -42,12 +42,15 @@ namespace IntervalApp.MainUserControls
 
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
-            string SourcePath;
+            string SourcePath,msgImport;
             SourcePath = TxtSource.Text;
             if (File.Exists(SourcePath))
             {
                 if (SourcePath.Substring(SourcePath.Length - 4, 4) == ".csv")
-                    ImportCSV.importTable(Application.Current.Resources["ProjectPrefix"].ToString(), SourcePath);
+                {
+                    msgImport = ImportCSV.importTable(Application.Current.Resources["ProjectPrefix"].ToString(), SourcePath);
+                    MessageBox.Show(msgImport);
+                }
                 else
                     MessageBox.Show("Type of file must be a .csv!");
             }

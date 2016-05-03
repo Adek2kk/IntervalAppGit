@@ -12,15 +12,15 @@ namespace ImportData
 {
     public static class ImportCSV
     {
-        public static void importTable(string prefix, string filePath)
+        public static string importTable(string prefix, string filePath)
         {
             string tmp,tmpCol,tmpColType;
             string tableName = "", tableType = "";
             string columns = "", columnsCreate="";
             string data = "";
             string fullTableName = prefix + "_";
-            bool startData = false;
-            bool onlyData = false;
+            bool startData = false, onlyData = false, dropOld=false;
+
 
             using (var parser = new TextFieldParser(File.OpenRead(filePath)))
             {
@@ -40,10 +40,12 @@ namespace ImportData
                             tableName = fields[1].ToUpper();
                             fullTableName = fullTableName + tableType + "_" + tableName;
                             if(onlyData==false) 
-                                tryCreateTable(prefix, tableName, tableType, columnsCreate);
+                                tryCreateTable(prefix, tableName, tableType, columnsCreate,dropOld);
                         }
                         else if (tmp == "ONLYDATA")
                             onlyData = true;
+                        else if (tmp == "DROP")
+                            dropOld = true;
                         else if (tmp == "COLUMNS")
                         {
                             for (int i = 1; i < fields.Length - 1; i++)
@@ -57,7 +59,7 @@ namespace ImportData
                             columns = columns.Remove(columns.Length - 1);
                             columnsCreate = columnsCreate.Remove(columnsCreate.Length - 1);
                             if (onlyData == false)
-                                tryCreateTable(prefix, tableName, tableType, columnsCreate);
+                                tryCreateTable(prefix, tableName, tableType, columnsCreate,dropOld);
                         }
                         else if (tmp == "DATA")
                             startData = true;
@@ -75,16 +77,25 @@ namespace ImportData
                     
                 }
             }
+            return "Import status: success";
         }
 
-        private static bool tryCreateTable(string prefix, string tableName, string tableType, string columns)
+        private static bool tryCreateTable(string prefix, string tableName, string tableType, string columns, bool drop)
         {
             if (tableName != "" && tableType != "" && columns != "")
             {
                 if (tableType == "DIMENSION")
+                {
+                    if (drop == true)
+                        DimensionHandler.dropDimension(prefix, tableName);
                     DimensionHandler.addDimension(tableName, columns, prefix);
+                }
                 else
+                {
+                    if (drop == true)
+                        FactHandler.dropFact(prefix, tableName);
                     FactHandler.addFact(tableName, columns, prefix);
+                }
                 return true;
             }
             return false;
