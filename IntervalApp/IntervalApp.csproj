@@ -70,6 +70,9 @@
     <Compile Include="MainUserControls\CreateFacts.xaml.cs">
       <DependentUpon>CreateFacts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainUserControls\CreateFunctionTable.xaml.cs">
+      <DependentUpon>CreateFunctionTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainUserControls\CreateRelations.xaml.cs">
       <DependentUpon>CreateRelations.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,9 @@
     </Compile>
     <Compile Include="MainUserControls\Facts.xaml.cs">
       <DependentUpon>Facts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainUserControls\FunctionTables.xaml.cs">
+      <DependentUpon>FunctionTables.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainUserControls\Query.xaml.cs">
       <DependentUpon>Query.xaml</DependentUpon>
@@ -125,6 +131,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MainUserControls\CreateFunctionTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainUserControls\CreateRelations.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainUserControls\Facts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\FunctionTables.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
