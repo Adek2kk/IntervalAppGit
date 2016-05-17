@@ -82,6 +82,12 @@
     <Compile Include="MainUserControls\Facts.xaml.cs">
       <DependentUpon>Facts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainUserControls\Query.xaml.cs">
+      <DependentUpon>Query.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainUserControls\QueryResult.xaml.cs">
+      <DependentUpon>QueryResult.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainUserControls\Relations.xaml.cs">
       <DependentUpon>Relations.xaml</DependentUpon>
     </Compile>
@@ -129,6 +135,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainUserControls\Facts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\Query.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\QueryResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
