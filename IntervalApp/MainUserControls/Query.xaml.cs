@@ -51,5 +51,11 @@ namespace IntervalApp.MainUserControls
                 Switcher.Switch(new QueryResult(queryres,richText));
             }
         }
+
+        private void sheet_Click(object sender, RoutedEventArgs e)
+        {
+            TableSheet sheet = new TableSheet();
+            sheet.Show();
+        }
     }
 }

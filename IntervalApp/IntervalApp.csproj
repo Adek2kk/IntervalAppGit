@@ -109,6 +109,9 @@
     <Compile Include="MainUserControls\ProjectPage.xaml.cs">
       <DependentUpon>ProjectPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainUserControls\TableSheet.xaml.cs">
+      <DependentUpon>TableSheet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Switchable\Switcher.cs" />
     <Page Include="AccessoryUserControls\ColumnBar.xaml">
       <SubType>Designer</SubType>
@@ -171,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainUserControls\ProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\TableSheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
