@@ -10,12 +10,26 @@ namespace ConnDBlib
 {
     public static class FunctionHandler
     {
-        public static void addFunction(string tablename, string attributes, string type)
+        public static string makeQueryAddFunction(string tablename, string key, string eventTime, string eventValue, string fromString)
         {
             //TODO
-            string sql = "Create table " + type + "_FUNCTION_" + tablename + "(" + attributes + ")";
+            string sql = "INSERT INTO " + tablename 
+               + " SELECT " + key + " as KEY, " 
+               + eventTime + " AS START_INTERVAL, " 
+               + "LEAD(" + eventTime + ") OVER(ORDER BY " + key + ", " + eventTime + ") AS END_INTERVAL,"
+               + "REGR_SLOPE(" + eventValue + ", calculateut(" + eventTime + ")) OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS SLOPE,"
+               + "REGR_INTERCEPT(" + eventValue + ", calculateut(" + eventTime + ")) OVER(ORDER BY " + key + ", " + eventTime + "ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS INTERCEPT"
+               + "FROM " + fromString; 
+          return sql;
+        }
+
+        public static void addFunction(string query, string tableName)
+        {
+            Connection.ExecuteNonQuery(query);
+            string sql = "DELETE FROM " + tableName + "WHERE SLOPE IS NULL";
             Connection.ExecuteNonQuery(sql);
         }
+
 
         public static DataSet getFunctions(string prefix)
         {

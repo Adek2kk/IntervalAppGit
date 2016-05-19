@@ -33,5 +33,25 @@ namespace IntervalApp.MainUserControls
             Switcher.Switch(new ProjectPage(2));
         }
 
-    }
+        private void BtnSheet_Click(object sender, RoutedEventArgs e)
+        {
+            TableSheet sheet = new TableSheet();
+            sheet.Show();
+        }
+        private void BtnExecute_Click(object sender, RoutedEventArgs e)
+        {
+            FunctionHandler.addFunction(TxtQuery.Text.ToString(), getTableName());
+            Switcher.Switch(new ProjectPage(2));
+        }
+        private void BtnGenerate_Click(object sender, RoutedEventArgs e)
+        {
+            TxtQuery.Text = FunctionHandler.makeQueryAddFunction(getTableName(), "", "", "", "");
+            
+        }
+
+        private string getTableName()
+        {
+            return Application.Current.Resources["ProjectPrefix"].ToString() + "_FUNCTION_" + TxtTableName.Text.ToString();
+        }
+        }
 }

@@ -8,7 +8,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1000">
     <StackPanel>
-
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label>Tabel name</Label>
+            <TextBox Name="TxtTableName"  Width="510"/>
+        </StackPanel>
+        <Button Name="BtnGenerate" Content="Genereate query" Click="BtnGenerate_Click"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Name="TxtQuery" ScrollViewer.CanContentScroll="True" Height="146" Width="785"/>
+            <Label Width="75"></Label>
+            <Button x:Name="BtnSheet" Content="Table sheet" HorizontalAlignment="Left"  Width="102" Click="BtnSheet_Click" Height="26" />
+        </StackPanel>
+        <Button Name="BtnExecute" Content="Execute query" Click="BtnExecute_Click"/>
         <Button x:Name="BtnBack" Content="Back" Click="BtnBack_Click"/>
     </StackPanel>
 </UserControl>
