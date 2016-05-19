@@ -115,6 +115,9 @@
     <Compile Include="MainUserControls\ProjectPage.xaml.cs">
       <DependentUpon>ProjectPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainUserControls\ShowFunction.xaml.cs">
+      <DependentUpon>ShowFunction.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainUserControls\TableSheet.xaml.cs">
       <DependentUpon>TableSheet.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainUserControls\ProjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainUserControls\ShowFunction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

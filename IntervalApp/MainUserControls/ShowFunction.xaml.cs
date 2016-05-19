@@ -14,17 +14,21 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using IntervalApp.Switchable;
-using System.Data;
 using ConnDBlib;
+using System.Data;
 
 namespace IntervalApp.MainUserControls
 {
     /// <summary>
-    /// Interaction logic for CreateFunctionTable.xaml
+    /// Interaction logic for ShowFunction.xaml
     /// </summary>
-    public partial class CreateFunctionTable : UserControl
+    public partial class ShowFunction : UserControl
     {
-        public CreateFunctionTable()
+        public ShowFunction()
+        {
+            InitializeComponent();
+        }
+        public ShowFunction(string tableName)
         {
             InitializeComponent();
         }

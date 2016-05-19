@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="IntervalApp.MainUserControls.FunctionTables"
+﻿<UserControl x:Class="IntervalApp.MainUserControls.ShowFunction"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
     <StackPanel>
-        <StackPanel Name="FunctionContainer" Width="300"/>
-        <Button Name="BtnAddFunction" Content="Add" Click="BtnAddFunction_Click"/>
+        <Button x:Name="BtnBack" Content="Back" Click="BtnBack_Click"/>
     </StackPanel>
 </UserControl>

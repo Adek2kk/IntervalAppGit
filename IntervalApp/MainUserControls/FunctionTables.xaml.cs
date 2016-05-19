@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using IntervalApp.Switchable;
+using ConnDBlib;
+using System.Data;
+
 namespace IntervalApp.MainUserControls
 {
     /// <summary>
@@ -23,6 +27,33 @@ namespace IntervalApp.MainUserControls
         public FunctionTables()
         {
             InitializeComponent();
+            SetButtonFunctionss();
         }
+
+        private void SetButtonFunctionss()
+        {
+
+            DataSet testowy = FunctionHandler.getFunctions(Application.Current.Resources["ProjectPrefix"].ToString());
+
+            foreach (DataRow row in testowy.Tables["result"].Rows)
+            {
+                Button c = new Button();
+                c.Content = row[0].ToString();
+                c.Click += ShowFunction_Click;
+                this.FunctionContainer.Children.Add(c);
+            }
+        }
+
+        private void BtnAddFunction_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new CreateFunctionTable());
+        }
+
+        private void ShowFunction_Click(object sender, RoutedEventArgs e)
+        {
+            Button tmp = (Button)sender;
+            Switcher.Switch(new ShowFunction(tmp.Content.ToString()));
+        }
+
     }
 }
