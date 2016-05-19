@@ -8,6 +8,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
     <StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label>Table name</Label>
+            <TextBox Name="TxtTableName" IsEnabled="False" />
+        </StackPanel>
+        <Button Name="BtnDrop" Click="BtnDrop_Click">Delete function</Button>
+        <DataGrid x:Name="resultQuery" HorizontalAlignment="Center"  VerticalAlignment="Top" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="482"  Width="894"/>
         <Button x:Name="BtnBack" Content="Back" Click="BtnBack_Click"/>
     </StackPanel>
 </UserControl>

@@ -24,6 +24,7 @@ namespace IntervalApp.MainUserControls
     /// </summary>
     public partial class ShowFunction : UserControl
     {
+        string table;
         public ShowFunction()
         {
             InitializeComponent();
@@ -31,11 +32,19 @@ namespace IntervalApp.MainUserControls
         public ShowFunction(string tableName)
         {
             InitializeComponent();
+            table = tableName;
+            TxtTableName.Text = tableName.Substring(tableName.LastIndexOf('_') + 1);
+            DataSet queryres = FunctionHandler.getFirstHundredFunction(tableName);
+            resultQuery.ItemsSource = queryres.Tables["result"].DefaultView;  
         }
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new ProjectPage(2));
         }
-
+        private void BtnDrop_Click(object sender, RoutedEventArgs e)
+        {
+            FunctionHandler.dropFunction(table);
+            Switcher.Switch(new ProjectPage(2));
+        }
     }
 }

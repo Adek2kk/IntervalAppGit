@@ -23,9 +23,9 @@ namespace ConnDBlib
             return Connection.ExecuteDataSet(test);
         }
 
-        public static void dropFunction(string prefix, string tableName)
+        public static void dropFunction(string tableName)
         {
-            string test = "DROP table " + prefix + "_FUNCTION_" + tableName + " CASCADE CONSTRAINTS";
+            string test = "DROP table " + tableName + " CASCADE CONSTRAINTS";
             Connection.ExecuteNonQuery(test);
         }
 
@@ -35,5 +35,13 @@ namespace ConnDBlib
             return Connection.ExecuteDataSet(test);
 
         }
+
+        public static DataSet getFirstHundredFunction(string tableName)
+        {
+            string test = "SELECT * FROM " + tableName + " where rownum < 100";
+            System.Console.WriteLine(test);
+            return Connection.ExecuteDataSet(test);
+        }
+
     }
 }
