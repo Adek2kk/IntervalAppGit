@@ -45,13 +45,24 @@ namespace IntervalApp.MainUserControls
         }
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
-            TxtQuery.Text = FunctionHandler.makeQueryAddFunction(getTableName(), "", "", "", "");
-            
+            if (checkIfAllFieldsFill())
+                TxtQuery.Text = FunctionHandler.makeQueryAddFunction(getTableName(), TxtKeyName1.Text.ToString(), TxtEventTime1.Text.ToString(), TxtEventValue1.Text.ToString(), TxtFrom1.Text.ToString(), TxtWhere1.Text.ToString());
+
         }
 
         private string getTableName()
         {
             return Application.Current.Resources["ProjectPrefix"].ToString() + "_FUNCTION_" + TxtTableName.Text.ToString();
         }
+
+        private bool checkIfAllFieldsFill()
+        {
+            if (TxtTableName.Text.ToString() == "" || TxtKeyName1.Text.ToString() == "" || TxtEventTime1.Text.ToString() == "" || TxtEventValue1.Text.ToString() == "" || TxtFrom1.Text.ToString() == "")
+            {
+                MessageBox.Show("Fill all fields!");
+                return false;
+            }
+            return true;
         }
+    }
 }

@@ -10,24 +10,26 @@ namespace ConnDBlib
 {
     public static class FunctionHandler
     {
-        public static string makeQueryAddFunction(string tablename, string key, string eventTime, string eventValue, string fromString)
+        public static string makeQueryAddFunction(string tablename, string key, string eventTime, string eventValue, string fromString, string whereString)
         {
             //TODO
-            string sql = "INSERT INTO " + tablename 
-               + " SELECT " + key + " as KEY, " 
+            string sql = "CREATE TABLE " + tablename 
+               + " AS SELECT " + key + " as KEY_ID, " 
                + eventTime + " AS START_INTERVAL, " 
-               + "LEAD(" + eventTime + ") OVER(ORDER BY " + key + ", " + eventTime + ") AS END_INTERVAL,"
-               + "REGR_SLOPE(" + eventValue + ", calculateut(" + eventTime + ")) OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS SLOPE,"
-               + "REGR_INTERCEPT(" + eventValue + ", calculateut(" + eventTime + ")) OVER(ORDER BY " + key + ", " + eventTime + "ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS INTERCEPT"
-               + "FROM " + fromString; 
+               + " LEAD(" + eventTime + ") OVER(ORDER BY " + key + ", " + eventTime + ") AS END_INTERVAL,"
+               + " REGR_SLOPE(" + eventValue + ", TO_NUMBER(TO_CHAR(" + eventTime + ",'YYYYMMDD')) ) OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS SLOPE,"
+               + " REGR_INTERCEPT(" + eventValue + ", TO_NUMBER(TO_CHAR(" + eventTime + ",'YYYYMMDD')) ) OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS INTERCEPT"
+               + " FROM " + fromString;
+            if (whereString != "")
+                sql = sql + " WHERE " + whereString;
           return sql;
         }
 
-        public static void addFunction(string query, string tableName)
+        public static int addFunction(string query, string tableName)
         {
             Connection.ExecuteNonQuery(query);
             string sql = "DELETE FROM " + tableName + "WHERE SLOPE IS NULL";
-            Connection.ExecuteNonQuery(sql);
+            return Connection.ExecuteNonQuery(sql);
         }
 
 

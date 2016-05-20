@@ -3,6 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="IntervalApp" Height="750" Width="1000">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type Button}" 
+                       BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Controls:ButtonHelper.PreserveTextCase" Value="True"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         
     </Grid>

@@ -12,9 +12,41 @@
             <Label>Tabel name</Label>
             <TextBox Name="TxtTableName"  Width="510"/>
         </StackPanel>
+
+        <TabControl Name="TabVersion">
+            <TabItem Header="Version 1">
+                <StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label>Key</Label>
+                        <TextBox x:Name="TxtKeyName1"  Width="176"/>
+                    </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label>Event time</Label>
+                    <TextBox Name="TxtEventTime1"  Width="176" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <Label>Event value</Label>
+                        <TextBox Name="TxtEventValue1"  Width="176"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <Label>From</Label>
+                        <TextBox Name="TxtFrom1"  Width="593"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <Label>Where</Label>
+                        <TextBox Name="TxtWhere1"  Width="585"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Version 2">
+
+            </TabItem>
+        </TabControl>
+        
         <Button Name="BtnGenerate" Content="Genereate query" Click="BtnGenerate_Click"/>
         <StackPanel Orientation="Horizontal">
-            <TextBox Name="TxtQuery" ScrollViewer.CanContentScroll="True" Height="146" Width="785"/>
+            <TextBox Name="TxtQuery" ScrollViewer.CanContentScroll="True" Height="146" Width="785" TextWrapping="Wrap"  AcceptsReturn="True"/>
             <Label Width="75"></Label>
             <Button x:Name="BtnSheet" Content="Table sheet" HorizontalAlignment="Left"  Width="102" Click="BtnSheet_Click" Height="26" />
         </StackPanel>
