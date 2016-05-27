@@ -5,17 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IntervalApp.MainUserControls"
         mc:Ignorable="d"
-        Title="TableSheet" Height="313.534" Width="460.902">
+        Title="TableSheet" Height="446.516" Width="950.664">
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Height="254" Margin="0,29,0,0" VerticalAlignment="Top" Width="453" Orientation="Horizontal">
-            <ListView x:Name="listViewFacts" HorizontalAlignment="Left" Height="254" VerticalAlignment="Top" Width="226">
+        <StackPanel HorizontalAlignment="Left" Height="343" Margin="0,29,0,0" VerticalAlignment="Top" Width="943" Orientation="Horizontal">
+            <ListView x:Name="listViewFacts" HorizontalAlignment="Left" Height="343" VerticalAlignment="Top" Width="150" SelectionChanged="listViewFacts_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView x:Name="listViewDim" HorizontalAlignment="Left" Height="240" VerticalAlignment="Top" Width="226" RenderTransformOrigin="0.5,0.5">
+            <ListView x:Name="listViewFactsCol" Width="150">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="listViewDim" HorizontalAlignment="Left" Height="343" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.5" SelectionChanged="listViewDim_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="listViewDimCol" Width="150">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="listViewFun" Width="150" SelectionChanged="listViewFun_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListView x:Name="listViewFunCol" Width="150">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
@@ -23,9 +51,10 @@
                 </ListView.View>
             </ListView>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="453" Orientation="Horizontal">
-            <Label x:Name="label" Content="Facts" HorizontalAlignment="Left" VerticalAlignment="Top" Width="223"/>
-            <Label x:Name="label1" Content="Dimensions" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.009,-0.266" Width="229"/>
+        <StackPanel HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="943" Orientation="Horizontal">
+            <Label x:Name="label" Content="Facts" HorizontalAlignment="Left" VerticalAlignment="Top" Width="319"/>
+            <Label x:Name="label1" Content="Dimensions" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.009,-0.266" Width="328"/>
+            <Label x:Name="label2" Content="Functions" Width="269"/>
         </StackPanel>
 
     </Grid>
