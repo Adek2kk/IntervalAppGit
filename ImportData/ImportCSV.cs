@@ -10,8 +10,20 @@ using ConnDBlib;
 
 namespace ImportData
 {
+    /// <summary>
+    /// This class contain all method required to import data to database
+    /// </summary>
     public static class ImportCSV
     {
+        /// <summary>
+        /// Method import data from file 
+        /// </summary>
+        /// <remarks>
+        /// Method can create table or drop table or do both before improt data. When method gets 'DATA' mark all previous marks are gather and table can create table. Then method starts import data.
+        /// </remarks>
+        /// <param name="prefix">Project prefix</param>
+        /// <param name="filePath">File path to .csv file</param>
+        /// <returns>Return string with import status message</returns>
         public static string importTable(string prefix, string filePath)
         {
             string tmp,tmpCol,tmpColType;
@@ -81,6 +93,14 @@ namespace ImportData
             return "Import status: success";
         }
 
+        /// <summary>
+        /// Method itry to drop and create table 
+        /// </summary>
+        /// <param name="prefix">Project prefix</param>
+        /// <param name="tableName">Table name</param>
+        /// <param name="tableType">New columns types</param>
+        /// <param name="columns">New table columns</param>
+        /// <param name="drop">If true table with the same name will be drop</param>
         private static bool tryCreateTable(string prefix, string tableName, string tableType, string columns, bool drop)
         {
             if (tableName != "" && tableType != "" && columns != "")
