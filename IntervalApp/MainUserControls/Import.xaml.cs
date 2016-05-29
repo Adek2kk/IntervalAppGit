@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using ImportData;
+using IntervalApp.Switchable;
 
 namespace IntervalApp.MainUserControls
 {
@@ -50,6 +51,8 @@ namespace IntervalApp.MainUserControls
                 {
                     msgImport = ImportCSV.importTable(Application.Current.Resources["ProjectPrefix"].ToString(), SourcePath);
                     MessageBox.Show(msgImport);
+                    Switcher.Switch(new ProjectPage(5));
+
                 }
                 else
                     MessageBox.Show("Type of file must be a .csv!");

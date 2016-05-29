@@ -41,12 +41,16 @@ namespace IntervalApp.MainUserControls
         private void BtnExecute_Click(object sender, RoutedEventArgs e)
         {
             FunctionHandler.addFunction(TxtQuery.Text.ToString(), getTableName());
-            Switcher.Switch(new ProjectPage(2));
+            DataSet data = FunctionHandler.checkFunctionExist(getTableName());
+            /*if (data.Tables.Count == 0)
+                MessageBox.Show("Error! Mistake in query. Check and execute again!");
+            else*/
+                Switcher.Switch(new ProjectPage(2));
         }
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
             if (checkIfAllFieldsFill())
-                TxtQuery.Text = FunctionHandler.makeQueryAddFunction(getTableName(), TxtKeyName1.Text.ToString(), TxtEventTime1.Text.ToString(), TxtEventValue1.Text.ToString(), TxtFrom1.Text.ToString(), TxtWhere1.Text.ToString());
+                TxtQuery.Text = FunctionHandler.makeQueryAddFunction(getTableName(), TxtKeyName1.Text.ToString(), TxtEventTime1.Text.ToString(), TxtEventValue1.Text.ToString(), TxtFrom1.Text.ToString(), TxtWhere1.Text.ToString(),ChkNumber1.IsChecked.Value);
 
         }
 

@@ -10,16 +10,24 @@ namespace ConnDBlib
 {
     public static class FunctionHandler
     {
-        public static string makeQueryAddFunction(string tablename, string key, string eventTime, string eventValue, string fromString, string whereString)
+        public static string makeQueryAddFunction(string tablename, string key, string eventTime, string eventValue, string fromString, string whereString, bool isNumber)
         {
             //TODO
-            string sql = "CREATE TABLE " + tablename 
-               + " AS SELECT " + key + " as KEY_ID, " 
-               + eventTime + " AS START_INTERVAL, " 
-               + " LEAD(" + eventTime + ") OVER(ORDER BY " + key + ", " + eventTime + ") AS END_INTERVAL,"
-               + " REGR_SLOPE(" + eventValue + ", TO_NUMBER(TO_CHAR(" + eventTime + ",'YYYYMMDD')) ) OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS SLOPE,"
-               + " REGR_INTERCEPT(" + eventValue + ", TO_NUMBER(TO_CHAR(" + eventTime + ",'YYYYMMDD')) ) OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS INTERCEPT"
-               + " FROM " + fromString;
+            string sql = "CREATE TABLE " + tablename
+               + " AS SELECT " + key + " as KEY_ID, "
+               + eventTime + " AS START_INTERVAL, "
+               + " LEAD(" + eventTime + ") OVER(ORDER BY " + key + ", " + eventTime + ") AS END_INTERVAL,";
+            if (!isNumber)
+            {
+                sql = sql + " REGR_SLOPE(" + eventValue + ", TO_NUMBER(TO_CHAR(" + eventTime + ",'YYYYMMDD')) ) OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS SLOPE,"
+               + " REGR_INTERCEPT(" + eventValue + ", TO_NUMBER(TO_CHAR(" + eventTime + ",'YYYYMMDD')) ) OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS INTERCEPT";
+            }
+            else
+            {
+                sql = sql + " REGR_SLOPE(" + eventValue + ", " + eventTime + ") OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS SLOPE,"
+                    + " REGR_INTERCEPT(" + eventValue + ", " + eventTime + ") OVER(ORDER BY " + key + ", " + eventTime + " ROWS BETWEEN CURRENT ROW AND 1 FOLLOWING) AS INTERCEPT";
+            }
+            sql = sql + " FROM " + fromString;
             if (whereString != "")
                 sql = sql + " WHERE " + whereString;
           return sql;
@@ -39,6 +47,11 @@ namespace ConnDBlib
             return Connection.ExecuteDataSet(test);
         }
 
+        public static DataSet checkFunctionExist(string tableName)
+        {
+            string test = "select table_name as facts from dba_tables where table_name =" + tableName + " and owner='HURTOWNIE'";
+            return Connection.ExecuteDataSet(test);
+        }
         public static void dropFunction(string tableName)
         {
             string test = "DROP table " + tableName + " CASCADE CONSTRAINTS";
