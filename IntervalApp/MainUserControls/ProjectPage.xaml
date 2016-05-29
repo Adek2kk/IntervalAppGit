@@ -31,7 +31,9 @@
             <TabItem Header="Queries">
                 <local:Query/>
             </TabItem>
-            <TabItem Header="Stats"/>
+            <TabItem Header="Stats">
+                <local:Stats/>
+            </TabItem>
         </TabControl>
     </StackPanel>
 </UserControl>
