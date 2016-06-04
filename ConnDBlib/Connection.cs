@@ -11,6 +11,11 @@ using System.Windows.Documents;
 
 namespace ConnDBlib
 {
+    public class Result
+    {
+        public string errormsg;
+        public DataSet wynik;
+    }
     /// <summary>
     /// Main class in library with basic method needed to connect to database, execute queries, open and close connection
     /// </summary>
@@ -96,6 +101,32 @@ namespace ConnDBlib
                 System.Console.WriteLine(ex.Message);
             }
             return null;
+        }
+
+        /// <summary>
+        /// Method execute query with data set as result
+        /// </summary>
+        /// <param name="sql">SQL query</param>
+        /// <returns>Returns DataSet with result</returns>
+        public static Result ExecuteDataSet2(string sql)
+        { Result ret = new Result();
+            try
+            {
+                Open();
+                DataSet ds = new DataSet();
+                OracleDataAdapter da = new OracleDataAdapter(sql, conn);
+                da.Fill(ds, "result");
+                Close();
+                ret.errormsg = "OK";
+                ret.wynik = ds;
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                ret.errormsg = ex.Message;
+                ret.wynik = null;
+                return ret;
+            }
         }
 
 

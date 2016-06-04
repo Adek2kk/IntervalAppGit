@@ -42,13 +42,23 @@ namespace IntervalApp.MainUserControls
                 
                 System.Console.WriteLine(richText);
                 string corr = Connection.ExecuteNonQuery(richText);
-                //Cos nie teges bo przy errorze powinno zwrocic cos innego niz -1, a zawsze sie wyswietla :/
+                //Juz dziala, bo obszedlem to dookola
                 textBlockError.Text = corr;
             }
             else
             {
-                DataSet queryres = Connection.ExecuteDataSet(richText);
-                Switcher.Switch(new QueryResult(queryres,richText));
+                try
+                {
+                    Result wyniczek = Connection.ExecuteDataSet2(richText);
+                    //DataSet queryres = Connection.ExecuteDataSet(richText);
+                    if (wyniczek.errormsg == "OK")
+                        Switcher.Switch(new QueryResult(wyniczek.wynik, richText));
+                    else textBlockError.Text = wyniczek.errormsg;
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 

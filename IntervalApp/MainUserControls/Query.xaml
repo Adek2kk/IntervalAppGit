@@ -18,7 +18,9 @@
         <Button x:Name="executeQuery" Content="Execute" HorizontalAlignment="Left" Margin="574,462,0,0" VerticalAlignment="Top" Width="75" Click="executeQuery_Click"/>
         <CheckBox x:Name="checkBoxRet" Content="Returning table?" HorizontalAlignment="Left" Margin="48,462,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <Button x:Name="sheet" Content="table sheet" HorizontalAlignment="Left" Margin="690,64,0,0" VerticalAlignment="Top" Width="75" Click="sheet_Click"/>
-        <TextBlock x:Name="textBlockError" HorizontalAlignment="Left" Margin="690,112,0,0" TextWrapping="Wrap" Text="Tutaj pojawi sie ewentualna tresc bledu" VerticalAlignment="Top" Height="80" Width="212"/>
+        <TextBlock x:Name="textBlockError" HorizontalAlignment="Left" Margin="690,112,0,0" TextWrapping="Wrap" Text="If error occurs it will be shown here." Foreground="Red" VerticalAlignment="Top" Height="80" Width="212">
+            
+        </TextBlock>
 
     </Grid>
 </UserControl>
