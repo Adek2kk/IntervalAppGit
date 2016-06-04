@@ -126,7 +126,7 @@ namespace ConnDBlib
         /// </summary>
         /// <param name="sql">SQL query </param>
         /// <returns>Returns error code or -1 if successful</returns>
-        public static int ExecuteNonQuery(string sql)
+        public static string ExecuteNonQuery(string sql)
         {
             try
             {
@@ -139,13 +139,17 @@ namespace ConnDBlib
                 affected = cmd.ExecuteNonQuery();
                 mytransaction.Commit();
                 Close();
-                return affected;
+                Console.Write(affected);
+                return affected.ToString();
+                
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                return ex.Message;
             }
-            return -1;
+            Console.Write(-1);
+            return "-1";
         }
 
 

@@ -43,6 +43,36 @@ namespace ConnDBlib
             System.Console.WriteLine(sql);
             Connection.ExecuteNonQuery(sql);
         }
+        /// <summary>
+        /// Add new foreign key between two tables
+        /// </summary>
+        /// <param name="table1">First table name</param>
+        /// <param name="table2">Second table name</param>
+        /// <param name="column2">Second column name</param>
+        public static void addForeignKey2(string table1,string table2, string column2)
+        {
+            DataSet testowy = DimensionHandler.getDimensionColumns(table2);
+            string clmntype="";
+            foreach (DataRow row in testowy.Tables["result"].Rows)
+            {
+                if (row[0].ToString() == column2)
+                    clmntype = row[1].ToString();
+            }
+
+            Console.WriteLine(clmntype);
+            string columnfk = alu(column2) + "_" + alu(table2);
+            string sql_create_column = "ALTER TABLE " + table1 +" ADD " + columnfk+" "+clmntype;
+            System.Console.WriteLine(sql_create_column);
+
+            Connection.ExecuteNonQuery(sql_create_column);
+
+            string sql = "ALTER TABLE " + table1 +
+                        " ADD CONSTRAINT " + alu(table1) + "_" + alu(table2) + "_" + alu(column2) + " " +
+                        "FOREIGN KEY" + "(" + columnfk + ") " +
+                        "REFERENCES " + table2 + "(" + column2 + ")";
+            System.Console.WriteLine(sql);
+            Connection.ExecuteNonQuery(sql);
+        }
 
         /// <summary>
         /// Drop selected constriant

@@ -60,24 +60,25 @@ namespace IntervalApp.MainUserControls
             return listItems;
         }
 
-        private void listViewTables1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+     /*   private void listViewTables1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listViewColumns1.ItemsSource = columnList(listViewTables1.SelectedItem.ToString());
         }
-
+        */
         private void listViewTables2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listViewColumns2.ItemsSource = columnList(listViewTables2.SelectedItem.ToString());
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+       /* private void button_Click(object sender, RoutedEventArgs e)
         {
-            HierarchyHandler.addForeignKey(listViewTables1.SelectedItem.ToString(), listViewColumns1.SelectedItem.ToString(), listViewTables2.SelectedItem.ToString(), listViewColumns2.SelectedItem.ToString());
-        }
+            HierarchyHandler.addForeignKey(listViewTables1.SelectedItem.ToString(), listViewTables2.SelectedItem.ToString(), listViewColumns2.SelectedItem.ToString());
+        }*/
 
         private void createFK_Click(object sender, RoutedEventArgs e)
         {
-            HierarchyHandler.addForeignKey(listViewTables1.SelectedItem.ToString(), listViewColumns1.SelectedItem.ToString(), listViewTables2.SelectedItem.ToString(), listViewColumns2.SelectedItem.ToString());
+            //HierarchyHandler.addForeignKey(listViewTables1.SelectedItem.ToString(), listViewColumns1.SelectedItem.ToString(), listViewTables2.SelectedItem.ToString(), listViewColumns2.SelectedItem.ToString());
+            HierarchyHandler.addForeignKey2(listViewTables1.SelectedItem.ToString(), listViewTables2.SelectedItem.ToString(), listViewColumns2.SelectedItem.ToString());
             Switcher.Switch(new ProjectPage(4));
         }
 

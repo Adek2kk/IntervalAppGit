@@ -10,8 +10,7 @@
              d:DesignHeight="700" d:DesignWidth="1000">
     <Grid>
         <StackPanel HorizontalAlignment="Left" Height="337" Margin="43,10,0,0" VerticalAlignment="Top" Width="912" Orientation="Horizontal">
-            <ListView x:Name="listViewTables1" HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="189" SelectionChanged="listViewTables1_SelectionChanged"/>
-            <ListView x:Name="listViewColumns1" Width="173"/>
+            <ListView x:Name="listViewTables1" HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="189" />
             <ListView x:Name="listViewTables2" Width="189" SelectionChanged="listViewTables2_SelectionChanged"/>
             <ListView x:Name="listViewColumns2" Width="182"/>
 

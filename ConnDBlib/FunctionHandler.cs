@@ -54,7 +54,7 @@ namespace ConnDBlib
         /// <param name="query">SQL query to create </param>
         /// <param name="tableName">Table name  projectPrefix_FUNCTION_tableName </param>
         /// <returns>Returns SQL code</returns>
-        public static int addFunction(string query, string tableName)
+        public static string addFunction(string query, string tableName)
         {
             Connection.ExecuteNonQuery(query);
             string sql = "DELETE FROM " + tableName + "WHERE SLOPE IS NULL";
