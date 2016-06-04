@@ -43,7 +43,7 @@ namespace IntervalApp.MainUserControls
                 System.Console.WriteLine(richText);
                 string corr = Connection.ExecuteNonQuery(richText);
                 //Cos nie teges bo przy errorze powinno zwrocic cos innego niz -1, a zawsze sie wyswietla :/
-                if(corr=="-1") System.Console.WriteLine("UDALO SIE DOBRZE JEST");
+                textBlockError.Text = corr;
             }
             else
             {
