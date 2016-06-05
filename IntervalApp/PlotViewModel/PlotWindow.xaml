@@ -13,10 +13,6 @@
         <local2:MainViewModel/>
     </Window.DataContext>
     <Grid>
-        <oxy:Plot Title="{Binding Title}">
-            <oxy:Plot.Series>
-                <oxy:LineSeries ItemsSource="{Binding Points}"/>
-            </oxy:Plot.Series>
-        </oxy:Plot>
+        <oxy:PlotView x:Name="Chart" Model="{Binding Model}"/>
     </Grid>
 </Controls:MetroWindow>

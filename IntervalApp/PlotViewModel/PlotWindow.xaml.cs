@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using MahApps.Metro.Controls;
+using OxyPlot;
+using OxyPlot.Series;
+using OxyPlot.Axes;
 
 namespace IntervalApp.PlotViewModel
 {
@@ -21,9 +24,18 @@ namespace IntervalApp.PlotViewModel
     /// </summary>
     public partial class PlotWindow : MetroWindow
     {
-        public PlotWindow()
+        private MainViewModel mvm = null;
+        public List<StatHolder> selectedStat;
+        public PlotWindow(List<StatHolder> holder)
         {
             InitializeComponent();
+            selectedStat = holder;
+            
+            mvm = new MainViewModel();
+            mvm.Plot_2_Column(selectedStat);
+
+            Chart.DataContext = mvm;
+
         }
     }
 }

@@ -31,7 +31,7 @@
             <TabItem Header="Queries">
                 <local:Query/>
             </TabItem>
-            <TabItem Header="Stats">
+            <TabItem Header="Queries Log">
                 <local:Stats/>
             </TabItem>
         </TabControl>

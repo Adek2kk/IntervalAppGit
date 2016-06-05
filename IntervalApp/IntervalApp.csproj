@@ -144,6 +144,7 @@
     <Compile Include="PlotViewModel\PlotWindow.xaml.cs">
       <DependentUpon>PlotWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatHolder.cs" />
     <Compile Include="Switchable\Switcher.cs" />
     <Page Include="AccessoryUserControls\ColumnBar2.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -44,6 +44,10 @@ namespace IntervalApp.MainUserControls
                 Result corr = Connection.ExecuteNonQuery2(richText);
                 //Juz dziala, bo obszedlem to dookola
                 textBlockError.Text = corr.errormsg + "\nExecution time:"+corr.executiontime+" ms";
+                if (checkBoxSave.IsChecked.Value == true)
+                {
+                    StatHandler.addQueryLog(Application.Current.Resources["ProjectPrefix"].ToString(), richText.ToString().Replace("'", "\""), corr.executiontime, txtComment.Text.ToString().ToString().Replace("'", "\""));
+                }
             }
             else
             {
@@ -52,7 +56,13 @@ namespace IntervalApp.MainUserControls
                     Result wyniczek = Connection.ExecuteDataSet2(richText);
                     //DataSet queryres = Connection.ExecuteDataSet(richText);
                     if (wyniczek.errormsg == "OK")
-                        Switcher.Switch(new QueryResult(wyniczek.wynik, richText, wyniczek.executiontime));
+                    {
+                        if (checkBoxSave.IsChecked.Value == true)
+                        {
+                            StatHandler.addQueryLog(Application.Current.Resources["ProjectPrefix"].ToString(), richText.ToString().Replace("'","\""), wyniczek.executiontime, txtComment.Text.ToString().ToString().Replace("'", "\""));
+                        }
+                    Switcher.Switch(new QueryResult(wyniczek.wynik, richText, wyniczek.executiontime));
+                    }
                     else textBlockError.Text = wyniczek.errormsg;
                 }
                 catch(Exception ex)

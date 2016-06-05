@@ -10,6 +10,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
     <StackPanel>
-        <Button Name="BtnTestPlot" Content="Demo plot" Click="BtnTestPlot_Click" />
+        <ListView x:Name="listView"  Height="229"  HorizontalAlignment="Center" Width="758" />
+        <Button x:Name="BtnAddQuery" Content="Add query log" Click="BtnAddQuery_Click" />
+        <ListView x:Name="listViewSelected"  Height="229"  HorizontalAlignment="Center" Width="758" />
+        <Button x:Name="BtnTestPlot" Content="Chart" Click="BtnTestPlot_Click" />
+        <TextBox Name="Counter"></TextBox>
     </StackPanel>
 </UserControl>
