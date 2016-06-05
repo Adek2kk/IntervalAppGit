@@ -73,6 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccessoryUserControls\ColumnBar2.xaml.cs">
+      <DependentUpon>ColumnBar2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AccessoryUserControls\ColumnBar.xaml.cs">
       <DependentUpon>ColumnBar.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
       <DependentUpon>PlotWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Switchable\Switcher.cs" />
+    <Page Include="AccessoryUserControls\ColumnBar2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AccessoryUserControls\ColumnBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

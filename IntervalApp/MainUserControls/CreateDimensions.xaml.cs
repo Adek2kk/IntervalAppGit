@@ -27,12 +27,12 @@ namespace IntervalApp.MainUserControls
     public partial class CreateDimensions : UserControl
     {
         private bool updating;
-        private List<ColumnBar> ColumnList;
+        private List<ColumnBar2> ColumnList;
 
         public CreateDimensions()
         {
             InitializeComponent();
-            ColumnList = new List<ColumnBar>();
+            ColumnList = new List<ColumnBar2>();
             AddColumnBar();
             updating = false;
         }
@@ -41,7 +41,7 @@ namespace IntervalApp.MainUserControls
         {
             InitializeComponent();
             this.BtnCreate.Content = "Update";
-            ColumnList = new List<ColumnBar>();
+            ColumnList = new List<ColumnBar2>();
             fillUpdateFields(tableName);
             TxtTableName.Text = tableName.Substring(tableName.LastIndexOf('_') + 1);
             updating = true;
@@ -70,7 +70,7 @@ namespace IntervalApp.MainUserControls
             StackPanel sp = new StackPanel();
             sp.Orientation = System.Windows.Controls.Orientation.Horizontal;
 
-            ColumnBar ftp = new ColumnBar();
+            ColumnBar2 ftp = new ColumnBar2();
             ColumnList.Add(ftp);
 
             Button b = new Button();
@@ -95,7 +95,7 @@ namespace IntervalApp.MainUserControls
 
             foreach (object o in sp.Children.OfType<ColumnBar>())
             {
-                ColumnBar ftp = (ColumnBar)o;
+                ColumnBar2 ftp = (ColumnBar2)o;
                 if (this.ColumnList.Contains(ftp))
                 {
                     this.ColumnList.Remove(ftp);
@@ -117,11 +117,11 @@ namespace IntervalApp.MainUserControls
 
             string tmpStr = "";
             bool allFill = true;
-            foreach (ColumnBar tmp in ColumnList)
+            foreach (ColumnBar2 tmp in ColumnList)
             {
                 if (tmp.TxtColumnName.Text.ToString() == "" || tmp.TxtColumnType.Text.ToString() == "")
                     allFill = false;
-                tmpStr = tmpStr + tmp.TxtColumnName.Text.ToString() + " " + tmp.TxtColumnType.Text.ToString() + ",";
+                tmpStr = tmpStr + tmp.TxtColumnName.Text.ToString() + " " + tmp.TxtColumnType.Text.ToString() +" "+tmp.TxtColumnCons.Text.ToString() + ",";
             }
             tmpStr = tmpStr.Remove(tmpStr.Length - 1);
 

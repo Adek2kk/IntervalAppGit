@@ -60,7 +60,7 @@ namespace ConnDBlib
             {
                 conn = new OracleConnection(OracleServer);
                 conn.Open();
-                System.Console.WriteLine("Connected to database");
+                //System.Console.WriteLine("Connected to database");
                 return true;
             }
             catch (Exception ex)
