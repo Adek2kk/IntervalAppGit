@@ -15,6 +15,7 @@ namespace ConnDBlib
     {
         public string errormsg;
         public DataSet wynik;
+        public long executiontime;
     }
     /// <summary>
     /// Main class in library with basic method needed to connect to database, execute queries, open and close connection
@@ -114,11 +115,15 @@ namespace ConnDBlib
             {
                 Open();
                 DataSet ds = new DataSet();
+                //startowanie czasomierza
+                var watch = System.Diagnostics.Stopwatch.StartNew();
                 OracleDataAdapter da = new OracleDataAdapter(sql, conn);
+                watch.Stop();
                 da.Fill(ds, "result");
                 Close();
                 ret.errormsg = "OK";
                 ret.wynik = ds;
+                ret.executiontime = watch.ElapsedMilliseconds;
                 return ret;
             }
             catch (Exception ex)
@@ -181,6 +186,43 @@ namespace ConnDBlib
             }
             Console.Write(-1);
             return "-1";
+        }
+
+        /// <summary>
+        /// Execute SQL query without dataset result
+        /// </summary>
+        /// <param name="sql">SQL query </param>
+        /// <returns>Returns error code or -1 if successful</returns>
+        public static Result ExecuteNonQuery2(string sql)
+        {
+            Result ret = new Result();
+            try
+            {
+                Open();
+                int affected;
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                OracleTransaction mytransaction = conn.BeginTransaction();
+                OracleCommand cmd = conn.CreateCommand();
+                cmd.CommandText = sql;
+                cmd.Connection = conn;
+                affected = cmd.ExecuteNonQuery();
+                mytransaction.Commit();
+                //Test czy rzeczywiscie mierzy czas;
+                //System.Threading.Thread.Sleep(100);
+                watch.Stop();
+                Close();
+                Console.Write(affected);
+                ret.errormsg = "OK";
+                ret.executiontime = watch.ElapsedMilliseconds;
+                return ret;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                ret.errormsg = ex.Message;
+                return ret;
+            }
         }
 
 

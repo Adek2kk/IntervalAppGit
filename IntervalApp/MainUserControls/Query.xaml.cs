@@ -41,9 +41,9 @@ namespace IntervalApp.MainUserControls
             {
                 
                 System.Console.WriteLine(richText);
-                string corr = Connection.ExecuteNonQuery(richText);
+                Result corr = Connection.ExecuteNonQuery2(richText);
                 //Juz dziala, bo obszedlem to dookola
-                textBlockError.Text = corr;
+                textBlockError.Text = corr.errormsg + "\nExecution time:"+corr.executiontime+" ms";
             }
             else
             {
@@ -52,7 +52,7 @@ namespace IntervalApp.MainUserControls
                     Result wyniczek = Connection.ExecuteDataSet2(richText);
                     //DataSet queryres = Connection.ExecuteDataSet(richText);
                     if (wyniczek.errormsg == "OK")
-                        Switcher.Switch(new QueryResult(wyniczek.wynik, richText));
+                        Switcher.Switch(new QueryResult(wyniczek.wynik, richText, wyniczek.executiontime));
                     else textBlockError.Text = wyniczek.errormsg;
                 }
                 catch(Exception ex)

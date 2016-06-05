@@ -27,10 +27,11 @@ namespace IntervalApp.MainUserControls
         {
             InitializeComponent();
         }
-        public QueryResult(DataSet wynik, string query)
+        public QueryResult(DataSet wynik, string query, long exectime)
         {
             InitializeComponent();
             resultQuery.ItemsSource = wynik.Tables["result"].DefaultView;
+            textBlockExecTime.Text = exectime + " ms";
             this.query = query;
         }
 

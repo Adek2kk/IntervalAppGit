@@ -10,6 +10,7 @@
     <Grid>
         <DataGrid x:Name="resultQuery" HorizontalAlignment="Left" Margin="73,49,0,0" VerticalAlignment="Top" Height="376" Width="657"/>
         <Button x:Name="goBack" Content="Back" HorizontalAlignment="Left" Margin="655,448,0,0" VerticalAlignment="Top" Width="75" Click="goBack_Click"/>
+        <TextBlock x:Name="textBlockExecTime" HorizontalAlignment="Left" Margin="754,49,0,0" TextWrapping="Wrap" Text="Czas wykonania query" VerticalAlignment="Top" Height="35" Width="147"/>
 
     </Grid>
 </UserControl>
