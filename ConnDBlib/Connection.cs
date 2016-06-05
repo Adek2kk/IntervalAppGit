@@ -11,10 +11,25 @@ using System.Windows.Documents;
 
 namespace ConnDBlib
 {
+    /// <summary>
+    /// Helper class with query results with additional statistic and error
+    /// </summary>
     public class Result
     {
+        /// <summary>
+        /// Contain error message
+        /// </summary>
+        /// <value>The value can be any valid string</value>
         public string errormsg;
+        /// <summary>
+        /// Contain DataSet with query result
+        /// </summary>
+        /// <value>The value can be any valid DataSet</value>
         public DataSet wynik;
+        /// <summary>
+        /// Contain query time
+        /// </summary>
+        /// <value>The value can be any valid long</value>
         public long executiontime;
     }
     /// <summary>
@@ -251,6 +266,7 @@ namespace ConnDBlib
         public static void insert_row(string tableName, string columns, string data)
         {
             string sql = "INSERT INTO " +  tableName + " (" + columns + ") VALUES ("+ data + ")";
+            System.Console.WriteLine(sql);
             ExecuteNonQuery(sql);
         }
     }

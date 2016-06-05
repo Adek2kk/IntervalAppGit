@@ -47,5 +47,7 @@
         </StackPanel>
         <Button Name="BtnExecute" Content="Execute query" Click="BtnExecute_Click"/>
         <Button x:Name="BtnBack" Content="Back" Click="BtnBack_Click"/>
+        <TextBlock x:Name="textBlockError" HorizontalAlignment="Left" TextWrapping="Wrap" Text="If error occurs it will be shown here." Foreground="Red" VerticalAlignment="Top" Height="80" Width="212"/>
+
     </StackPanel>
 </UserControl>

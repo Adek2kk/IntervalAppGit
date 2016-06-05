@@ -53,12 +53,12 @@ namespace ConnDBlib
         /// </summary>
         /// <param name="query">SQL query to create </param>
         /// <param name="tableName">Table name  projectPrefix_FUNCTION_tableName </param>
-        /// <returns>Returns SQL code</returns>
-        public static string addFunction(string query, string tableName)
+        /// <returns>Returns Result class with error</returns>
+        public static Result addFunction(string query, string tableName)
         {
             Connection.ExecuteNonQuery(query);
             string sql = "DELETE FROM " + tableName + "WHERE SLOPE IS NULL";
-            return Connection.ExecuteNonQuery(sql);
+            return Connection.ExecuteNonQuery2(sql);
         }
 
         /// <summary>

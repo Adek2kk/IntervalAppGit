@@ -40,12 +40,12 @@ namespace IntervalApp.MainUserControls
         }
         private void BtnExecute_Click(object sender, RoutedEventArgs e)
         {
-            FunctionHandler.addFunction(TxtQuery.Text.ToString(), getTableName());
-            DataSet data = FunctionHandler.checkFunctionExist(getTableName());
-            /*if (data.Tables.Count == 0)
-                MessageBox.Show("Error! Mistake in query. Check and execute again!");
-            else*/
+            Result result = FunctionHandler.addFunction(TxtQuery.Text.ToString(), getTableName());
+            if (result.errormsg == "OK")
+            {
                 Switcher.Switch(new ProjectPage(2));
+            }
+            else textBlockError.Text = result.errormsg;
         }
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
