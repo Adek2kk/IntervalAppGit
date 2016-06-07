@@ -23,7 +23,7 @@ namespace IntervalApp.PlotViewModel
         public void Plot_2_Column(List<StatHolder> PlotData, string XAxisTitle = "", string YAxisTitle = "", double LabelAngle = 0)
         {
             var plotModel = new PlotModel();
-
+            plotModel.Title = "Query time";
 
             var categoryAxis = new CategoryAxis();
             categoryAxis.MinorStep = 1;

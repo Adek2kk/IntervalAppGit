@@ -32,7 +32,7 @@ namespace IntervalApp.PlotViewModel
             selectedStat = holder;
             
             mvm = new MainViewModel();
-            mvm.Plot_2_Column(selectedStat);
+            mvm.Plot_2_Column(selectedStat,"Queries","Time [ms]");
 
             Chart.DataContext = mvm;
 

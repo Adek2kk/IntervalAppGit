@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using ConnDBlib;
 using System.Data;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace IntervalApp.MainUserControls
 {
@@ -25,29 +26,25 @@ namespace IntervalApp.MainUserControls
     /// </summary>
     public partial class Stats : UserControl
     {
-        public List<string> listSelectedItems;
+        ObservableCollection<StatHolder> _QueryCollection = new ObservableCollection<StatHolder>();
+        ObservableCollection<StatHolder> _SelectedQueryCollection = new ObservableCollection<StatHolder>();
+
+        public ObservableCollection<StatHolder> QueryCollection { get { return _QueryCollection; } }
+        public ObservableCollection<StatHolder> SelectedQueryCollection { get { return _SelectedQueryCollection; } }
+
+        private StatHolder m_SelectedQuery;
+        public StatHolder SelectedQuery { get { return m_SelectedQuery; } set { m_SelectedQuery = value; } }
+   
         public List<StatHolder> selectedStat;
+
         public Stats()
         {
             InitializeComponent();
-            populateQueryList();
             selectedStat = new List<StatHolder>();
-            listSelectedItems = new List<string>();
+            AllLogs();
+            this.DataContext = this;
         }
-        private void populateQueryList()
-        {
-            DataSet queries = StatHandler.getFunctions(Application.Current.Resources["ProjectPrefix"].ToString());
-            List <string> listItems = new List<string> ();
-
-            foreach (DataRow row in queries.Tables["result"].Rows)
-            {
-                string comment = row[1].ToString();
-                string query = row[0].ToString();
-                string time = row[2].ToString(); ;
-                listItems.Add(query + "|comment: " + comment + "\n|time:" + time);
-            }
-            listView.ItemsSource = listItems;
-        }
+       
         private void BtnTestPlot_Click(object sender, RoutedEventArgs e)
         {
             PlotWindow plot = new PlotWindow(selectedStat);
@@ -56,17 +53,40 @@ namespace IntervalApp.MainUserControls
 
         private void BtnAddQuery_Click(object sender, RoutedEventArgs e)
         {
-            string text = listView.SelectedItem.ToString();
-            listSelectedItems.Add(text);
-            listViewSelected.ItemsSource = listSelectedItems;
-
             StatHolder stat = new StatHolder();
-            stat.query = text.Substring(0, text.LastIndexOf('|'));
-            stat.time = Convert.ToInt64(text.Substring(text.LastIndexOf(':') + 1));
+            stat.sql = m_SelectedQuery.sql;
+            stat.time = m_SelectedQuery.time;
             selectedStat.Add(stat);
             Counter.Text = selectedStat.Count.ToString();
-        }
-    }
+           
 
-    
-}
+            _SelectedQueryCollection.Add(m_SelectedQuery);
+
+            this.DataContext = this;
+        }
+
+        private void BtnClearQuery_Click(object sender, RoutedEventArgs e)
+        {
+            _SelectedQueryCollection.Clear();
+            selectedStat.Clear();
+            Counter.Text = selectedStat.Count.ToString();
+        }
+
+        private void AllLogs()
+        {
+            // _QueryCollection.Clear();
+
+            DataSet queries = StatHandler.getFunctions(Application.Current.Resources["ProjectPrefix"].ToString());
+
+            foreach (DataRow row in queries.Tables["result"].Rows)
+            {
+                _QueryCollection.Add(new StatHolder
+                {
+                    sql = row[0].ToString(),
+                    time = Convert.ToInt64(row[2].ToString()),
+                    comment = row[1].ToString()
+                });
+            }
+
+        }
+    }}

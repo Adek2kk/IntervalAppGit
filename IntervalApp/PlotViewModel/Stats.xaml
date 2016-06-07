@@ -10,9 +10,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
     <StackPanel>
-        <ListView x:Name="listView"  Height="229"  HorizontalAlignment="Center" Width="758" />
+        <ListView Height="180"   Name="QueryList" ItemsSource="{Binding QueryCollection}" SelectedItem="{Binding SelectedQuery}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Sql"  DisplayMemberBinding="{Binding sql}"/>
+                    <GridViewColumn Header="Time"  DisplayMemberBinding="{Binding time}"/>
+                    <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding comment}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
         <Button x:Name="BtnAddQuery" Content="Add query log" Click="BtnAddQuery_Click" />
-        <ListView x:Name="listViewSelected"  Height="229"  HorizontalAlignment="Center" Width="758" />
+        <Button x:Name="BtnClearQuery" Content="Clear selected queries" Click="BtnClearQuery_Click" />
+        <ListView Height="180" Name="SelectedQueryList" ItemsSource="{Binding SelectedQueryCollection}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Sql"  DisplayMemberBinding="{Binding sql}"/>
+                    <GridViewColumn Header="Time"  DisplayMemberBinding="{Binding time}"/>
+                    <GridViewColumn Header="Comment"  DisplayMemberBinding="{Binding comment}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
         <Button x:Name="BtnTestPlot" Content="Chart" Click="BtnTestPlot_Click" />
         <TextBox Name="Counter"></TextBox>
     </StackPanel>

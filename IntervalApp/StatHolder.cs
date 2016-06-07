@@ -8,7 +8,8 @@ namespace IntervalApp
 {
     public class StatHolder
     {
-        public string query;
-        public long time;        
+        public string sql { get; set; }
+        public long time { get; set; }
+        public string comment { get; set; }
     }
 }
