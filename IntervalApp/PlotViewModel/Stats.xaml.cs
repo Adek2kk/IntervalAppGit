@@ -54,11 +54,18 @@ namespace IntervalApp.MainUserControls
         private void BtnAddQuery_Click(object sender, RoutedEventArgs e)
         {
             StatHolder stat = new StatHolder();
-            stat.sql = m_SelectedQuery.sql;
-            stat.time = m_SelectedQuery.time;
-            selectedStat.Add(stat);
-            Counter.Text = selectedStat.Count.ToString();
-           
+            //error do opisania, wywala sie jak nic nie ma
+            try
+            {
+                stat.sql = m_SelectedQuery.sql;
+                stat.time = m_SelectedQuery.time;
+                selectedStat.Add(stat);
+                Counter.Text = selectedStat.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             _SelectedQueryCollection.Add(m_SelectedQuery);
 
@@ -77,15 +84,22 @@ namespace IntervalApp.MainUserControls
             // _QueryCollection.Clear();
 
             DataSet queries = StatHandler.getFunctions(Application.Current.Resources["ProjectPrefix"].ToString());
-
-            foreach (DataRow row in queries.Tables["result"].Rows)
+            //wywala sie jak nic nie ma
+            try
             {
-                _QueryCollection.Add(new StatHolder
+                foreach (DataRow row in queries.Tables["result"].Rows)
                 {
-                    sql = row[0].ToString(),
-                    time = Convert.ToInt64(row[2].ToString()),
-                    comment = row[1].ToString()
-                });
+                    _QueryCollection.Add(new StatHolder
+                    {
+                        sql = row[0].ToString(),
+                        time = Convert.ToInt64(row[2].ToString()),
+                        comment = row[1].ToString()
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
         }
