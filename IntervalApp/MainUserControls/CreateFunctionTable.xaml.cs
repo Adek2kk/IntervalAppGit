@@ -40,9 +40,10 @@ namespace IntervalApp.MainUserControls
         }
         private void BtnExecute_Click(object sender, RoutedEventArgs e)
         {
-            Result result = FunctionHandler.addFunction(TxtQuery.Text.ToString(), getTableName());
+            Result result = FunctionHandler.addFunction(TxtQuery.Text.ToString());
             if (result.errormsg == "OK")
             {
+                FunctionHandler.deleteNullSlope(getTableName());
                 Switcher.Switch(new ProjectPage(2));
             }
             else textBlockError.Text = result.errormsg;

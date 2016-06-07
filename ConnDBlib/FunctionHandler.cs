@@ -13,7 +13,7 @@ namespace ConnDBlib
     /// </summary>
     public static class FunctionHandler
     {
-        /// <summary>
+        /// <summary>C:\GitHub-Interval\IntervalAppGit\ConnDBlib\FunctionHandler.cs
         /// Generate query to create and populate new function table
         /// </summary>
         /// <param name="tablename">Table name  projectPrefix_FUNCTION_tableName</param>
@@ -52,12 +52,21 @@ namespace ConnDBlib
         /// Execute query to create and populate new function table
         /// </summary>
         /// <param name="query">SQL query to create </param>
+        /// <returns>Returns Result class with error</returns>
+        public static Result addFunction(string query)
+        {
+            return Connection.ExecuteNonQuery2(query);
+        }
+
+
+        /// <summary>
+        /// Delete rows without end interval
+        /// </summary>
         /// <param name="tableName">Table name  projectPrefix_FUNCTION_tableName </param>
         /// <returns>Returns Result class with error</returns>
-        public static Result addFunction(string query, string tableName)
+        public static Result deleteNullSlope(string tableName)
         {
-            Connection.ExecuteNonQuery(query);
-            string sql = "DELETE FROM " + tableName + "WHERE SLOPE IS NULL";
+            string sql = "DELETE FROM " + tableName + " WHERE SLOPE IS NULL";
             return Connection.ExecuteNonQuery2(sql);
         }
 
