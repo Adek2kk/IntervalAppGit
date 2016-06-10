@@ -19,5 +19,6 @@
         <Button x:Name="BtnAddColumn" Margin="0,0,949,0" Content="Add" Click="BtnAddColumn_Click"/>
         <Button x:Name="BtnCreate" Content="Create" Click="BtnCreate_Click"/>
         <Button x:Name="BtnBack" Content="Back" Click="BtnBack_Click"/>
+        <TextBlock x:Name="textBlockError" TextWrapping="Wrap" Text="If error occurs, it will be shown here" Foreground="#FF9C0000"/>
     </StackPanel>
 </UserControl>

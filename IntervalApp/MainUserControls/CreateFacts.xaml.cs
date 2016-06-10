@@ -129,11 +129,18 @@ namespace IntervalApp.MainUserControls
                 allFill = false;
             if (allFill)
             {
-               
-                FactHandler.addFact(TxtTableName.Text, tmpStr, Application.Current.Resources["ProjectPrefix"].ToString());
-                DataSet testowy = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
-                Console.WriteLine(testowy.Tables["result"].ToString());
-                return true;
+                Result wynik = new Result();
+                wynik=FactHandler.addFact(TxtTableName.Text, tmpStr, Application.Current.Resources["ProjectPrefix"].ToString());
+                if (wynik.errormsg != "OK")
+                {
+                    textBlockError.Text = wynik.errormsg;
+                }
+                else
+                {
+                    DataSet testowy = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
+                    Console.WriteLine(testowy.Tables["result"].ToString());
+                    return true;
+                }
             }
             else
                 MessageBox.Show("Fill all Textbox!!!");

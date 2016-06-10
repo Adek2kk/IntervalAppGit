@@ -21,11 +21,11 @@ namespace ConnDBlib
         /// <param name="tablename">Contains table name with out project prefix or type</param>
         /// <param name="attributes">Contains columns with restiction  </param>
         /// <param name="type">Project prefix </param>
-        public static void addDimension(string tablename, string attributes, string type)
+        public static Result addDimension(string tablename, string attributes, string type)
         {
             //attributes = "id int not null PRIMARY KEY, " + attributes;
             string sql = "Create table " + type + "_DIMENSION_" + tablename + "(" + attributes + ")";
-            Connection.ExecuteNonQuery(sql);
+            return Connection.ExecuteNonQuery2(sql);
         }
 
 

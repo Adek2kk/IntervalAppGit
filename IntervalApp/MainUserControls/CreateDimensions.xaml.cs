@@ -129,11 +129,21 @@ namespace IntervalApp.MainUserControls
                 allFill = false;
             if (allFill)
             {
-                DimensionHandler.addDimension(TxtTableName.Text, tmpStr, Application.Current.Resources["ProjectPrefix"].ToString());
-                Console.WriteLine(tmpStr);
-                DataSet testowy = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
-                Console.WriteLine(testowy.Tables["result"].ToString());
-                return true;
+                
+                
+                    Result wynik = new Result();
+                    wynik = DimensionHandler.addDimension(TxtTableName.Text, tmpStr, Application.Current.Resources["ProjectPrefix"].ToString());
+                if (wynik.errormsg != "OK")
+                {
+                    textBlockError.Text = wynik.errormsg;
+                }
+                else
+                {
+                    Console.WriteLine(tmpStr);
+                    DataSet testowy = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
+                    Console.WriteLine(testowy.Tables["result"].ToString());
+                    return true;
+                }
             }
             else
                 MessageBox.Show("Fill all Textbox!!!");
