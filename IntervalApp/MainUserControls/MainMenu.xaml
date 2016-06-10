@@ -10,6 +10,7 @@
         <Button Name="BtnNew" Click="BtnNew_Click">New project</Button>
         <Button Name="BtnOpen" Click="BtnOpen_Click">Open project</Button>
         <Button Name="BtnTest" Click="BtnTest_Click">Test project</Button>
+        <Button Name="BtnInit" Click="BtnInit_Click" Visibility="Hidden">Initialze application</Button>
         <Button Name="BtnExit" Click="BtnExit_Click">Exit</Button>
     </StackPanel>
 </UserControl>

@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-using MahApps.Metro.Controls;
 using IntervalApp.Switchable;
 using IntervalApp.MainUserControls.ProjectManagement;
+using ConnDBlib;
+using System;
 
 namespace IntervalApp.MainUserControls
 {
@@ -24,9 +12,18 @@ namespace IntervalApp.MainUserControls
     /// </summary>
     public partial class MainMenu : UserControl
     {
+       
         public MainMenu()
         {
             InitializeComponent();
+
+            if (InitHandler.checkIfInitDone() != "OK")
+            {
+                Console.WriteLine(InitHandler.checkIfInitDone());
+                BtnInit.Visibility = Visibility.Visible;
+            }
+
+
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
@@ -48,6 +45,28 @@ namespace IntervalApp.MainUserControls
         {
             Application.Current.Resources["ProjectPrefix"] = "TES";
             Switcher.Switch(new ProjectPage(0));
+        }
+
+        private void BtnInit_Click(object sender, RoutedEventArgs e)
+        {
+            string result;
+            result = InitHandler.addTables();
+            if (result != "OK")
+                MessageBox.Show(result + "! Please check database.");
+            else
+            {
+                InitHandler.addTestProject();
+                result = InitHandler.addSequences();
+                if (result != "OK")
+                    MessageBox.Show(result + "! Please check database.");
+                else
+                {
+                    result = InitHandler.addTriggers();
+                    if (result != "OK")
+                        MessageBox.Show(result + "! Please check databse.");
+                }
+            }
+                        
         }
     }
 
