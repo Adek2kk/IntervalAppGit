@@ -49,7 +49,7 @@ namespace ConnDBlib
         /// <param name="table1">First table name</param>
         /// <param name="table2">Second table name</param>
         /// <param name="column2">Second column name</param>
-        public static void addForeignKey2(string table1,string table2, string column2)
+        public static Result addForeignKey2(string table1,string table2, string column2)
         {
             DataSet testowy = DimensionHandler.getDimensionColumns(table2);
             string clmntype="";
@@ -71,7 +71,7 @@ namespace ConnDBlib
                         "FOREIGN KEY" + "(" + columnfk + ") " +
                         "REFERENCES " + table2 + "(" + column2 + ")";
             System.Console.WriteLine(sql);
-            Connection.ExecuteNonQuery(sql);
+            return Connection.ExecuteNonQuery2(sql);
         }
 
         /// <summary>

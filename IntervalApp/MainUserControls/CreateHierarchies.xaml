@@ -17,6 +17,7 @@
         </StackPanel>
         <Button x:Name="createFK" Content="Create" HorizontalAlignment="Left" Margin="43,366,0,0" VerticalAlignment="Top" Width="75" Click="createFK_Click"/>
         <Button x:Name="goBack" Content="goBack" HorizontalAlignment="Left" Margin="700,366,0,0" VerticalAlignment="Top" Width="75" Click="goBack_Click"/>
+        <TextBlock x:Name="textBlockError" HorizontalAlignment="Left" Margin="43,417,0,0" TextWrapping="Wrap" Text="If error occurs, it will be shown here" VerticalAlignment="Top" Width="365" Foreground="#FF9B0000"/>
 
 
 
