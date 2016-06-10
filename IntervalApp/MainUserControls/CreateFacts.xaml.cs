@@ -116,10 +116,15 @@ namespace IntervalApp.MainUserControls
            
             string tmpStr = "";
             bool allFill = true;
+            bool onlyNumber = true;
             foreach (ColumnBar2 tmp in ColumnList)
             {
                 if (tmp.TxtColumnName.Text.ToString() == "" || tmp.TxtColumnType.Text.ToString() == "")
                     allFill = false;
+
+                if (!(tmp.TxtColumnType.Text.ToString().Contains("number") || tmp.TxtColumnType.Text.ToString().Contains("number")))
+                    onlyNumber = false;
+
                 tmpStr = tmpStr + tmp.TxtColumnName.Text.ToString() + " " + tmp.TxtColumnType.Text.ToString() + " " + tmp.TxtColumnCons.Text.ToString() + ",";
             }
 
@@ -127,7 +132,7 @@ namespace IntervalApp.MainUserControls
             
             if (TxtTableName.Text.ToString() == "")
                 allFill = false;
-            if (allFill)
+            if (allFill&&onlyNumber)
             {
                 Result wynik = new Result();
                 wynik=FactHandler.addFact(TxtTableName.Text, tmpStr, Application.Current.Resources["ProjectPrefix"].ToString());
@@ -143,7 +148,11 @@ namespace IntervalApp.MainUserControls
                 }
             }
             else
-                MessageBox.Show("Fill all Textbox!!!");
+            {
+                if(!allFill) MessageBox.Show("Fill all Textbox!!!");
+                if(!onlyNumber) MessageBox.Show("Column types can only be of type number");
+            }
+               
 
             return false;
         }
