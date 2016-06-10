@@ -33,11 +33,16 @@ namespace IntervalApp.MainUserControls.ProjectManagement
 
         private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
-            ProjectHandler.newProject("'" + TxtName.Text.ToString() + "', '" + TxtPrefix.Text.ToString().ToUpper() + "'");
-            Application.Current.Resources["ProjectPrefix"] = TxtPrefix.Text.ToString().ToUpper();
-            Switcher.Switch(new ProjectPage(0));
+            Result result = ProjectHandler.newProject("'" + TxtName.Text.ToString() + "', '" + TxtPrefix.Text.ToString().ToUpper() + "'");
+            if (result.errormsg != "OK")
+                MessageBox.Show(result.errormsg);
+            else
+            {
+                Application.Current.Resources["ProjectPrefix"] = TxtPrefix.Text.ToString().ToUpper();
+                Switcher.Switch(new ProjectPage(0));
+            }
         }
-
+        //
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new MainMenu());

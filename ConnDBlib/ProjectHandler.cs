@@ -15,10 +15,11 @@ namespace ConnDBlib
         /// Check if function exist in database
         /// </summary>
         /// <param name="attributes">String contain project name and project prefix </param>
-        public static void newProject(string attributes)
+        public static Result newProject(string attributes)
         {
             string sql = "INSERT INTO MAIN_PROJECTS (NAME, PREFIX) VALUES " + " (" + attributes + ")";
-            Connection.ExecuteNonQuery(sql);
+            return Connection.ExecuteNonQuery2(sql);
+            //
         }
     }
 }
