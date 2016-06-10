@@ -8,6 +8,7 @@ using Oracle.DataAccess.Client;
 using System.Data;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.IO;
 
 namespace ConnDBlib
 {
@@ -71,10 +72,32 @@ namespace ConnDBlib
         /// <returns>Returns if connection is open (true) or failed to open (false)</returns>
         public static bool Open()
         {
+            string connect=null;
             try
             {
-                conn = new OracleConnection(OracleServer);
-                conn.Open();
+                using (StreamReader sr = new StreamReader("connection.txt"))
+                {
+                    String connection = sr.ReadLine();
+                    Console.WriteLine(connection);
+                    connect = connection;
+                    }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+            try
+            {
+                if (!String.IsNullOrEmpty(connect))
+                {
+                    conn = new OracleConnection(connect);
+                    conn.Open();
+                }
+                else
+                {
+                    conn = new OracleConnection(OracleServer);
+                    conn.Open();
+                }
                 //System.Console.WriteLine("Connected to database");
                 return true;
             }
