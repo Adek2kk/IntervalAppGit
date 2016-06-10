@@ -72,9 +72,11 @@ namespace ImportData
                         else if (tmp == "DATA")
                         {
                             startData = true;
+                            string result= "OK";
                             if (onlyData == false)
-                                tryCreateTable(prefix, tableName, tableType, columnsCreate, dropOld);
-
+                                result = tryCreateTable(prefix, tableName, tableType, columnsCreate, dropOld);
+                            if (result != "OK")
+                                return result;
                         }
                     }
                     else
@@ -85,7 +87,11 @@ namespace ImportData
 
                         data = data.Remove(data.Length - 1);
                         Console.WriteLine(data);
-                        Connection.insert_row(fullTableName, columns, data);
+                        Result result;
+                        result = Connection.insert_row(fullTableName, columns, data);
+                        if (result.errormsg != "OK")
+                            return "Import status: Problem with insert. Import abort";
+                        
                     }
                     
                 }
@@ -101,25 +107,41 @@ namespace ImportData
         /// <param name="tableType">New columns types</param>
         /// <param name="columns">New table columns</param>
         /// <param name="drop">If true table with the same name will be drop</param>
-        private static bool tryCreateTable(string prefix, string tableName, string tableType, string columns, bool drop)
+        private static string tryCreateTable(string prefix, string tableName, string tableType, string columns, bool drop)
         {
             if (tableName != "" && tableType != "" && columns != "")
             {
+                Result result;
+
                 if (tableType == "DIMENSION")
                 {
                     if (drop == true)
                         DimensionHandler.dropDimension(prefix, tableName);
-                    DimensionHandler.addDimension(tableName, columns, prefix);
+                    result = DimensionHandler.addDimension(tableName, columns, prefix);
+                    if (result.errormsg != "OK")
+                        return "Import status: Cannot create table. Please check if old table contains foreign keys or if all required inforamtion are correct.";
+                    return "OK";
                 }
                 else
                 {
                     if (drop == true)
                         FactHandler.dropFact(prefix, tableName);
-                    FactHandler.addFact(tableName, columns, prefix);
+                    result = FactHandler.addFact(tableName, columns, prefix);
+                    if (result.errormsg != "OK")
+                        return "Import status: Cannot create table. Please check if old table exists or contains foreign keys or if all required inforamtion are correct.";
+                    return "OK";
                 }
-                return true;
+                if (tableType == "FUNCTION")
+                {
+                    if (drop == true)
+                        FunctionHandler.dropFunction(prefix + "_" + tableType + "_" + tableName);
+                    result = FunctionHandler.addFunction(tableName, columns, prefix);
+                    if (result.errormsg != "OK")
+                        return "Import status: Cannot create table. Please check if old table exists or contains foreign keys or if all required inforamtion are correct.";
+                    return "OK";
+                }
             }
-            return false;
+            return "Import status: Please check if csv contains all required information - table type, table name and columns name with types";
         }
     }
 }

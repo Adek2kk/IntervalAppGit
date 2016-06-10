@@ -146,7 +146,7 @@ namespace ConnDBlib
         /// Method execute query with data set as result
         /// </summary>
         /// <param name="sql">SQL query</param>
-        /// <returns>Returns DataSet with result</returns>
+        /// <returns>Returns Result class with error</returns>
         public static Result ExecuteDataSet2(string sql)
         { Result ret = new Result();
             try
@@ -230,7 +230,7 @@ namespace ConnDBlib
         /// Execute SQL query without dataset result
         /// </summary>
         /// <param name="sql">SQL query </param>
-        /// <returns>Returns error code or -1 if successful</returns>
+        /// <returns>Returns Result class with error</returns>
         public static Result ExecuteNonQuery2(string sql)
         {
             Result ret = new Result();
@@ -271,7 +271,6 @@ namespace ConnDBlib
         /// <param name="tablename">Table name  projectPrefix_FUNCTION_tableName </param>
         /// <param name="attributes">Columns name </param>
         /// <param name="type">Columns type</param>
-        /// <returns>?</returns>
         public static void add_table(string tablename, string attributes, string type)
         {
             string sql = "Create table " + type + "_" + tablename + "(" + attributes + ")";
@@ -285,12 +284,12 @@ namespace ConnDBlib
         /// <param name="tableName">Table name  projectPrefix_FUNCTION_tableName </param>
         /// <param name="columns">Table columns</param>
         /// <param name="data">Data to insert</param>
-        /// <returns>?</returns>
-        public static void insert_row(string tableName, string columns, string data)
+        /// <returns>Returns Result class with error</returns>
+        public static Result insert_row(string tableName, string columns, string data)
         {
             string sql = "INSERT INTO " +  tableName + " (" + columns + ") VALUES ("+ data + ")";
             System.Console.WriteLine(sql);
-            ExecuteNonQuery(sql);
+            return ExecuteNonQuery2(sql);
         }
     }
 }
