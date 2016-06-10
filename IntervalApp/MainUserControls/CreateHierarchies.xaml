@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="IntervalApp.MainUserControls.CreateRelations"
+﻿<UserControl x:Class="IntervalApp.MainUserControls.CreateHierarchies"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,7 +10,7 @@
              d:DesignHeight="700" d:DesignWidth="1000">
     <Grid>
         <StackPanel HorizontalAlignment="Left" Height="337" Margin="43,10,0,0" VerticalAlignment="Top" Width="912" Orientation="Horizontal">
-            <ListView x:Name="listViewTables1" HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="189"/>
+            <ListView x:Name="listViewTables1" HorizontalAlignment="Left" Height="337" VerticalAlignment="Top" Width="189" SelectionChanged="listViewTables1_SelectionChanged"/>
             <ListView x:Name="listViewTables2" Width="189" SelectionChanged="listViewTables2_SelectionChanged"/>
             <ListView x:Name="listViewColumns2" Width="182"/>
 

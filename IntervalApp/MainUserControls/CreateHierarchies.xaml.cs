@@ -26,24 +26,43 @@ namespace IntervalApp.MainUserControls
         public CreateHierarchies()
         {
             InitializeComponent();
-            populateListView();
+            populateListView(null);
         }
 
-        public void populateListView()
+        public void populateListView(object selected)
         {
-            List<string> listItems = new List<string>();
-
-            DataSet dimensions = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
-           // DataSet facts = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
-
-            
-            foreach (DataRow row in dimensions.Tables["result"].Rows)
+            if (selected == null)
             {
-                listItems.Add(row[0].ToString());
-            }
+                List<string> listItems = new List<string>();
 
-            listViewTables1.ItemsSource = listItems;
-            listViewTables2.ItemsSource = listItems;
+                DataSet dimensions = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
+                // DataSet facts = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
+
+
+                foreach (DataRow row in dimensions.Tables["result"].Rows)
+                {
+                    listItems.Add(row[0].ToString());
+                }
+
+                listViewTables1.ItemsSource = listItems;
+                listViewTables2.ItemsSource = listItems;
+            }
+            else
+            {
+                List<string> listItems = new List<string>();
+
+                DataSet dimensions = DimensionHandler.getDimensions(Application.Current.Resources["ProjectPrefix"].ToString());
+                // DataSet facts = FactHandler.getFacts(Application.Current.Resources["ProjectPrefix"].ToString());
+
+
+                foreach (DataRow row in dimensions.Tables["result"].Rows)
+                {
+                    if(row[0].ToString()!=selected.ToString())
+                    listItems.Add(row[0].ToString());
+                }
+                listViewTables2.ItemsSource = listItems;
+            }
+            
         }
         public List<string> columnList(string tableName)
         {
@@ -57,11 +76,13 @@ namespace IntervalApp.MainUserControls
             return listItems;
         }
 
-      /*  private void listViewTables1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void listViewTables1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            listViewColumns1.ItemsSource = columnList(listViewTables1.SelectedItem.ToString());
+           populateListView(listViewTables1.SelectedItem);
+            //Console.WriteLine(listViewTables1.SelectedItem);
+            //listViewTables2.DataContext = this;
         }
-        */
+        
         private void listViewTables2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listViewColumns2.ItemsSource = columnList(listViewTables2.SelectedItem.ToString());
