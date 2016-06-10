@@ -60,11 +60,10 @@ namespace IntervalApp.MainUserControls
                 stat.sql = m_SelectedQuery.sql;
                 stat.time = m_SelectedQuery.time;
                 selectedStat.Add(stat);
-                Counter.Text = selectedStat.Count.ToString();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Queriy log is empty!");
             }
 
             _SelectedQueryCollection.Add(m_SelectedQuery);
@@ -76,14 +75,15 @@ namespace IntervalApp.MainUserControls
         {
             _SelectedQueryCollection.Clear();
             selectedStat.Clear();
-            Counter.Text = selectedStat.Count.ToString();
         }
 
         private void AllLogs()
         {
             // _QueryCollection.Clear();
+            _QueryCollection.Clear();
+            _SelectedQueryCollection.Clear();
 
-            DataSet queries = StatHandler.getFunctions(Application.Current.Resources["ProjectPrefix"].ToString());
+            DataSet queries = StatHandler.getStats(Application.Current.Resources["ProjectPrefix"].ToString());
             //wywala sie jak nic nie ma
             try
             {
@@ -91,9 +91,10 @@ namespace IntervalApp.MainUserControls
                 {
                     _QueryCollection.Add(new StatHolder
                     {
-                        sql = row[0].ToString(),
-                        time = Convert.ToInt64(row[2].ToString()),
-                        comment = row[1].ToString()
+                        id_query = Convert.ToInt32(row[0].ToString()),
+                        sql = row[1].ToString(),
+                        time = Convert.ToInt64(row[3].ToString()),
+                        comment = row[2].ToString()
                     });
                 }
             }
@@ -103,4 +104,15 @@ namespace IntervalApp.MainUserControls
             }
 
         }
-    }}
+
+        private void BtnDeleteSelected_Click(object sender, RoutedEventArgs e)
+        {
+            string ids = "";
+            foreach (StatHolder row in _SelectedQueryCollection)
+                ids = ids + "'" + row.id_query + "',";
+            ids = ids.Remove(ids.Length - 1);
+            StatHandler.deleteStats(ids);
+            AllLogs();
+        }
+    }
+}

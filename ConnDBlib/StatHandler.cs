@@ -34,10 +34,22 @@ namespace ConnDBlib
         /// </summary>
         /// <param name="prefixProject">Project prefix</param>
         /// <returns>Returns DataSet with queries logs</returns>
-        public static DataSet getFunctions(string prefixProject)
+        public static DataSet getStats(string prefixProject)
         {
-            string test = "select QUERY_TEXT, QUERY_COMMENT, QUERY_TIME from QUERY_HISTORY where PROJECT_PREFIX = '" + prefixProject + "'";
+            string test = "select ID_QUERY, QUERY_TEXT, QUERY_COMMENT, QUERY_TIME from QUERY_HISTORY where PROJECT_PREFIX = '" + prefixProject + "'";
             return Connection.ExecuteDataSet(test);
+        }
+
+        /// <summary>
+        /// Delete selected queries 
+        /// </summary>
+        /// <param name="ids">Ids of query logs to delete</param>
+        /// <returns>Returns error message</returns>
+        public static Result deleteStats(string ids)
+        {
+            string test = "delete from query_history where id_query in (" + ids + ")";
+            Console.WriteLine(test);
+            return Connection.ExecuteNonQuery2(test);
         }
     }
 }

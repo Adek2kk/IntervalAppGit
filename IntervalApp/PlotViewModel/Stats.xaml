@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000">
     <StackPanel>
-        <ListView Height="180"   Name="QueryList" ItemsSource="{Binding QueryCollection}" SelectedItem="{Binding SelectedQuery}">
+        <ListView Height="252"   Name="QueryList" ItemsSource="{Binding QueryCollection}" SelectedItem="{Binding SelectedQuery}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Sql"  DisplayMemberBinding="{Binding sql}"/>
@@ -20,8 +20,8 @@
             </ListView.View>
         </ListView>
         <Button x:Name="BtnAddQuery" Content="Add query log" Click="BtnAddQuery_Click" />
-        <Button x:Name="BtnClearQuery" Content="Clear selected queries" Click="BtnClearQuery_Click" />
-        <ListView Height="180" Name="SelectedQueryList" ItemsSource="{Binding SelectedQueryCollection}">
+        <Button x:Name="BtnClearQuery" Content="Clear selected queries view" Click="BtnClearQuery_Click" />
+        <ListView Height="225" Name="SelectedQueryList" ItemsSource="{Binding SelectedQueryCollection}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Sql"  DisplayMemberBinding="{Binding sql}"/>
@@ -30,7 +30,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="BtnTestPlot" Content="Chart" Click="BtnTestPlot_Click" />
-        <TextBox Name="Counter"></TextBox>
+        <Button x:Name="BtnPlot" Content="Chart" Click="BtnTestPlot_Click" />
+        <Button x:Name="BtnDeleteSelected" Content="Delete selected from database" Click="BtnDeleteSelected_Click"/>
     </StackPanel>
 </UserControl>
