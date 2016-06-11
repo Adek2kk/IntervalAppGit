@@ -19,6 +19,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="BtnRefresh" Content="Refresh lists" Click="BtnRefresh_Click" />
         <Button x:Name="BtnAddQuery" Content="Add query log" Click="BtnAddQuery_Click" />
         <Button x:Name="BtnClearQuery" Content="Clear selected queries view" Click="BtnClearQuery_Click" />
         <ListView Height="225" Name="SelectedQueryList" ItemsSource="{Binding SelectedQueryCollection}">

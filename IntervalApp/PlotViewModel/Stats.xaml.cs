@@ -114,5 +114,10 @@ namespace IntervalApp.MainUserControls
             StatHandler.deleteStats(ids);
             AllLogs();
         }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            AllLogs();
+        }
     }
 }
