@@ -24,18 +24,31 @@ namespace IntervalApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        ///<summary>
+        ///MainWindow Construct
+        /// </summary>
+        /// <param name="newPage">Selected UserControl</param>
         public MainWindow()
         {
             InitializeComponent();
             Switcher.pageSwitcher = this;
             Switcher.Switch(new MainMenu());
         }
- 
+
+        ///<summary>
+        ///Method open new UserControl
+        /// </summary>
+        /// <param name="nextPage">Selected UserControl</param>
         public void Navigate(UserControl nextPage)
         {
             this.Content = nextPage;
         }
- 
+
+        ///<summary>
+        ///Method open new UserControl
+        /// </summary>
+        /// <param name="nextPage">Selected UserControl</param>
+        /// <param name="state">Contain object that will be send to new UserControl</param>
         public void Navigate(UserControl nextPage, object state)
         {
             this.Content = nextPage;

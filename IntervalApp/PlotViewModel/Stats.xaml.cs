@@ -29,14 +29,31 @@ namespace IntervalApp.MainUserControls
         ObservableCollection<StatHolder> _QueryCollection = new ObservableCollection<StatHolder>();
         ObservableCollection<StatHolder> _SelectedQueryCollection = new ObservableCollection<StatHolder>();
 
+        ///<summary>
+        ///List contains all logs in StatHolder class
+        /// </summary>
         public ObservableCollection<StatHolder> QueryCollection { get { return _QueryCollection; } }
+
+        ///<summary>
+        ///List contains all selected logs in StatHolder class
+        /// </summary>
         public ObservableCollection<StatHolder> SelectedQueryCollection { get { return _SelectedQueryCollection; } }
 
         private StatHolder m_SelectedQuery;
+
+        ///<summary>
+        ///Object contains selected log in StatHolder class
+        /// </summary>
         public StatHolder SelectedQuery { get { return m_SelectedQuery; } set { m_SelectedQuery = value; } }
    
+        ///<summary>
+        ///List contains all selected logs in StatHolder class and send to chart
+        /// </summary>
         public List<StatHolder> selectedStat;
 
+        /// <summary>
+        /// Stats constructor
+        /// </summary>
         public Stats()
         {
             InitializeComponent();

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 using MahApps.Metro.Controls;
 using IntervalApp.Switchable;
-using IntervalApp.DatabaseConn;
+using ConnDBlib;
 using System.Data;
 
 namespace IntervalApp.MainUserControls.ProjectManagement
@@ -26,6 +26,10 @@ namespace IntervalApp.MainUserControls.ProjectManagement
     /// </summary>
     public partial class OpenProjectPage : UserControl
     {
+
+        /// <summary>
+        /// OpenProjectPage constructor
+        /// </summary>
         public OpenProjectPage()
         {
             InitializeComponent();
@@ -34,10 +38,9 @@ namespace IntervalApp.MainUserControls.ProjectManagement
 
         private void FillProjectsButtons()
         {
-            Connection conn = new Connection();
-            conn.Open();
+            
             string test = "select prefix from main_projects";
-            DataSet testowy = conn.ExecuteDataSet(test);
+            DataSet testowy = Connection.ExecuteDataSet(test);
 
 
             foreach (DataRow row in testowy.Tables["result"].Rows)
@@ -47,8 +50,6 @@ namespace IntervalApp.MainUserControls.ProjectManagement
                 c.Click += GoToProject_Click;
                 this.ProjectsContainer.Children.Add(c);
             }
-
-            conn.Close();
         }
 
         private void GoToProject_Click(object sender, RoutedEventArgs e)

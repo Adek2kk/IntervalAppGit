@@ -20,6 +20,9 @@ namespace IntervalApp.AccessoryUserControls
     /// </summary>
     public partial class ColumnBar : UserControl
     {
+        /// <summary>
+        /// ColumnBar constructor
+        /// </summary>
         public ColumnBar()
         {
             InitializeComponent();

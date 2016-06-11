@@ -79,7 +79,6 @@
     <Compile Include="AccessoryUserControls\ColumnBar.xaml.cs">
       <DependentUpon>ColumnBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseConn\Connection.cs" />
     <Compile Include="MainUserControls\CreateDimensions.xaml.cs">
       <DependentUpon>CreateDimensions.xaml</DependentUpon>
     </Compile>

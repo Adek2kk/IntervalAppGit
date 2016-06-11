@@ -10,16 +10,32 @@ using OxyPlot.Axes;
 
 namespace IntervalApp.PlotViewModel
 {
+    ///<summary>
+    ///Main view model class with methods requierd to draw the plot
+    /// </summary>
     public class MainViewModel
     {
+        ///<summary>
+        ///MainViewModel constructor
+        /// </summary>
         public MainViewModel()
         {
             // Create the plot model
             var tmp = new PlotModel { Title = "Simple example", Subtitle = "using OxyPlot" };
         }
 
+        ///<summary>
+        /// Plot model form OxyPlot library
+        /// </summary>
         public PlotModel Model { get; set; }
 
+        ///<summary>
+        ///Method prepare plot model to draw
+        /// </summary>
+        /// <param name="LabelAngle">Angle for label</param>
+        /// <param name="PlotData">List with query logs</param>
+        /// <param name="XAxisTitle">X axis title</param>
+        /// <param name="YAxisTitle">Y axis title</param>
         public void Plot_2_Column(List<StatHolder> PlotData, string XAxisTitle = "", string YAxisTitle = "", double LabelAngle = 0)
         {
             var plotModel = new PlotModel();

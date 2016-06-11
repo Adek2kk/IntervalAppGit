@@ -25,7 +25,14 @@ namespace IntervalApp.PlotViewModel
     public partial class PlotWindow : MetroWindow
     {
         private MainViewModel mvm = null;
+        ///<summary>
+        ///List contains selected logs in StatHolder class
+        /// </summary>
         public List<StatHolder> selectedStat;
+
+        ///<summary>
+        ///PlotWindow constructor
+        /// </summary>
         public PlotWindow(List<StatHolder> holder)
         {
             InitializeComponent();
